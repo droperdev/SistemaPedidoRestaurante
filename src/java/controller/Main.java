@@ -38,12 +38,21 @@ public class Main extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
 
-        if (action.equalsIgnoreCase("logout")) {
-            HttpSession session = request.getSession();
-            session.removeAttribute("user");
-            response.sendRedirect("index.jsp");
+        switch (action) {
+            case "orders": 
+                response.sendRedirect("orders.jsp");
+                break;
+                
+            case "history":
+                response.sendRedirect("history.jsp");
+                break;
+                
+            case "logout":
+                HttpSession session = request.getSession();
+                session.removeAttribute("user");
+                response.sendRedirect("index.jsp");
+                break;
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
