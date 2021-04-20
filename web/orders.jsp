@@ -3,6 +3,7 @@
     Created on : 17/04/2021, 04:33:53 AM
     Author     : droperdev
 --%>
+<%@page import="dto.UserDTO"%>
 <%@page import="dto.OrderDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="model.order.OrderDAOImpl"%>
@@ -10,7 +11,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    User user = (User) session.getAttribute("user");
+    UserDTO user = (UserDTO) session.getAttribute("user");
     if (user != null) {
 %>
 <html lang="es">
@@ -35,7 +36,7 @@
                     </div>
                     <div class="info">
                         <span class="user"><%= user.getFullName()%></span><br>
-                        <span class="role"><%= user.getUserName()%></span>
+                        <span class="role"><%= user.getRole().getName()%></span>
                     </div>
                 </div>
                 <hr>

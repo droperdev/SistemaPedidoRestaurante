@@ -5,6 +5,7 @@
  */
 package controller;
 
+import dto.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -43,7 +44,7 @@ public class Login extends HttpServlet {
             String password = request.getParameter("password");
             
             UserDAOImpl userDAO = new UserDAOImpl();
-            User user = userDAO.validateCredentials(userName, password);
+            UserDTO user = userDAO.validateCredentials(userName, password);
             if (user != null) {
                 session = request.getSession();
                 session.setAttribute("user", user);

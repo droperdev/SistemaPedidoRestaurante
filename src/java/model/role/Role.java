@@ -10,15 +10,19 @@ package model.role;
  * @author droperdev
  */
 public class Role {
+
     private int Id;
     private String Name;
+
+    public Role(int Id, String Name) {
+        this.Id = Id;
+        this.Name = Name;
+    }
 
     @Override
     public String toString() {
         return "Role{" + "Id=" + Id + ", Name=" + Name + '}';
     }
-    
-    
 
     public Role() {
     }
@@ -38,6 +42,5 @@ public class Role {
     public void setName(String Name) {
         this.Name = Name;
     }
-    
-    
+
 }

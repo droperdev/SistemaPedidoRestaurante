@@ -5,6 +5,8 @@
  */
 package dto;
 
+import model.role.Role;
+
 /**
  *
  * @author droperdev
@@ -12,10 +14,18 @@ package dto;
 public class UserDTO {
 
     private int Id;
+    private Role Role;
     private String Name;
     private String LastName;
 
     public UserDTO() {
+    }
+
+    public UserDTO(int Id, Role Role, String Name, String LastName) {
+        this.Id = Id;
+        this.Role = Role;
+        this.Name = Name;
+        this.LastName = LastName;
     }
 
     public UserDTO(int Id, String Name, String LastName) {
@@ -26,9 +36,9 @@ public class UserDTO {
 
     @Override
     public String toString() {
-        return "UserDTO{" + "Id=" + Id + ", Name=" + Name + ", LastName=" + LastName + '}';
+        return "UserDTO{" + "Id=" + Id + ", Role=" + Role + ", Name=" + Name + ", LastName=" + LastName + '}';
     }
-    
+
     
 
     public int getId() {
@@ -37,6 +47,14 @@ public class UserDTO {
 
     public void setId(int Id) {
         this.Id = Id;
+    }
+
+    public Role getRole() {
+        return Role;
+    }
+
+    public void setRole(Role role) {
+        this.Role = role;
     }
 
     public String getName() {
@@ -54,6 +72,9 @@ public class UserDTO {
     public void setLastName(String LastName) {
         this.LastName = LastName;
     }
-    
-    
+
+    public String getFullName() {
+        return Name + " " + LastName;
+    }
+
 }

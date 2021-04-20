@@ -5,11 +5,13 @@
  */
 package model.user;
 
+import dto.UserDTO;
+
 /**
  *
  * @author droperdev
  */
 public interface UserDAO {
 
-    public User validateCredentials(String userName, String password);
+    public UserDTO validateCredentials(String userName, String password);
 }
