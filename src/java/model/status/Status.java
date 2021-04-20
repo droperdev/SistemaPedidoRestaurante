@@ -3,22 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.category;
-
-import java.sql.Date;
+package model.status;
 
 /**
  *
  * @author IVAN
  */
-public class Category {
+public class Status {
     private int id;
-    private String name;
-    private Date CreatedAt;  
+    private String Name ;
 
     @Override
     public String toString() {
-        return "Category{" + "id=" + id + ", name=" + name + ", CreatedAt=" + CreatedAt + '}';
+        return "Status{" + "id=" + id + ", Name=" + Name + '}';
     }
 
     
@@ -32,20 +29,13 @@ public class Category {
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
-
-    public Date getCreatedAt() {
-        return CreatedAt;
-    }
-
-    public void setCreatedAt(Date CreatedAt) {
-        this.CreatedAt = CreatedAt;
-    }
+    
     
     
 }
