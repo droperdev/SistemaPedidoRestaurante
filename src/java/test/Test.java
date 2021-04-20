@@ -8,7 +8,6 @@ package test;
 import dto.UserDTO;
 import model.role.Role;
 import model.role.RoleDAOImpl;
-import model.user.User;
 import model.user.UserDAOImpl;
 
 /**
