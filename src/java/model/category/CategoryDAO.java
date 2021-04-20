@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.user;
+package model.category;
 
-import dto.UserDTO;
+import java.util.List;
 
 /**
  *
- * @author droperdev
+ * @author IVAN
  */
-public interface UserDAO {
+public interface CategoryDAO {
 
-    public UserDTO validateCredentials(String userName, String password);
+    List<Category> list();
 }

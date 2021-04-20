@@ -3,29 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.role;
+package dto;
 
 /**
  *
  * @author droperdev
  */
-public class Role {
-
+public class ClientDTO {
     private int Id;
     private String Name;
+    private String LastName;
 
-    public Role(int Id, String Name) {
+    public ClientDTO(int Id, String Name, String LastName) {
         this.Id = Id;
         this.Name = Name;
+        this.LastName = LastName;
     }
 
     @Override
     public String toString() {
-        return "Role{" + "Id=" + Id + ", Name=" + Name + '}';
+        return "ClientDTO{" + "Id=" + Id + ", Name=" + Name + ", LastName=" + LastName + '}';
     }
-
-    public Role() {
-    }
+    
 
     public int getId() {
         return Id;
@@ -43,4 +42,13 @@ public class Role {
         this.Name = Name;
     }
 
+    public String getLastName() {
+        return LastName;
+    }
+
+    public void setLastName(String LastName) {
+        this.LastName = LastName;
+    }
+    
+    
 }

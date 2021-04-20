@@ -19,7 +19,11 @@ public class ClientAddressDAOImpl implements ClientAddressDAO {
     @Override
     public ClientAddress getClientAddress(int id) {
         ClientAddress clientAddress = null;
+<<<<<<< HEAD
         String query = "SELECT * FROM Client WHERE Id=?";
+=======
+        String query = "SELECT * FROM ClientAddress WHERE Id=?";
+>>>>>>> develop
         con = cn.getConnection();
         try {
             ps = con.prepareStatement(query);

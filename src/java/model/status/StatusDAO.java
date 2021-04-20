@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.user;
+package model.status;
 
-import dto.UserDTO;
+import java.util.List;
 
 /**
  *
- * @author droperdev
+ * @author IVAN
  */
-public interface UserDAO {
-
-    public UserDTO validateCredentials(String userName, String password);
+public interface StatusDAO {
+    List<Status> list();
 }

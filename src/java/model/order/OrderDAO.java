@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.user;
+package model.order;
 
-import dto.UserDTO;
+import dto.OrderDTO;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author droperdev
  */
-public interface UserDAO {
-
-    public UserDTO validateCredentials(String userName, String password);
+public interface OrderDAO {
+    public List<OrderDTO> getAll(int[] ints);
 }

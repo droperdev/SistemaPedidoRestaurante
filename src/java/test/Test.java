@@ -5,9 +5,9 @@
  */
 package test;
 
+import dto.UserDTO;
 import model.role.Role;
 import model.role.RoleDAOImpl;
-import model.user.User;
 import model.user.UserDAOImpl;
 
 /**
@@ -25,8 +25,11 @@ public class Test {
         
         
         UserDAOImpl userDAO = new UserDAOImpl();
-        User user = userDAO.validateCredentials("plumbre", "123456");
+        UserDTO user = userDAO.validateCredentials("plumbre", "123456");
 
         System.out.println("User: " + user.toString());
+        
+        
+        
     }
 }

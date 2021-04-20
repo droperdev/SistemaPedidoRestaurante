@@ -5,15 +5,14 @@
  */
 package controller;
 
+import dto.UserDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.user.User;
 import model.user.UserDAOImpl;
 
 /**
@@ -43,11 +42,11 @@ public class Login extends HttpServlet {
             String password = request.getParameter("password");
             
             UserDAOImpl userDAO = new UserDAOImpl();
-            User user = userDAO.validateCredentials(userName, password);
+            UserDTO user = userDAO.validateCredentials(userName, password);
             if (user != null) {
                 session = request.getSession();
                 session.setAttribute("user", user);
-                response.sendRedirect("main.jsp");
+                response.sendRedirect("orders.jsp");
                 //request.getRequestDispatcher("main.jsp").forward(request, response);
             } else {
                request.setAttribute("message", "Credenciales invalidas");

@@ -6,13 +6,12 @@
 package model.user;
 
 import config.Conexion;
+import dto.UserDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import model.role.RoleDAOImpl;
+import model.role.Role;
 
 /**
  *
@@ -26,9 +25,12 @@ public class UserDAOImpl implements UserDAO {
     ResultSet rs;
 
     @Override
-    public User validateCredentials(String userName, String password) {
-        User user = null;
-        String query = "SELECT * FROM User WHERE UserName=? AND Password=?";
+    public UserDTO validateCredentials(String userName, String password) {
+        UserDTO user = null;
+        String query
+                = "SELECT u.Id, u.Name, u.LastName, u.RolId, r.Name RoleName FROM User u "
+                + "INNER JOIN Role r ON r.Id = u.RolId "
+                + "WHERE u.UserName=? AND u.Password=?";
         con = cn.getConnection();
         try {
             ps = con.prepareStatement(query);
@@ -36,15 +38,11 @@ public class UserDAOImpl implements UserDAO {
             ps.setString(2, password);
             rs = ps.executeQuery();
             while (rs.next()) {
-                user = new User();
+                user = new UserDTO();
                 user.setId(rs.getInt("Id"));
-                user.setRoleId(rs.getInt("RolId"));
+                user.setRole(new Role(rs.getInt("RolId"), rs.getString("RoleName")));
                 user.setName(rs.getString("Name"));
                 user.setLastName(rs.getString("LastName"));
-                user.setUserName(rs.getString("UserName"));
-                user.setPassword(rs.getString("Password"));
-                user.setCreatedAt(rs.getDate("CreateAt"));
-                user.setStatus(rs.getBoolean("Status"));
             }
         } catch (SQLException ex) {
             //Logger.getLogger(UserDAOImpl.class.getName()).log(Level.SEVERE, null, ex);

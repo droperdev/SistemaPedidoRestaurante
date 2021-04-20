@@ -3,29 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.role;
+package model.voucher;
 
 /**
  *
  * @author droperdev
  */
-public class Role {
+public class Voucher {
 
     private int Id;
-    private String Name;
+    private String name;
 
-    public Role(int Id, String Name) {
-        this.Id = Id;
-        this.Name = Name;
+    public Voucher() {
     }
+
+    public Voucher(int Id, String name) {
+        this.Id = Id;
+        this.name = name;
+    }
+    
+    
 
     @Override
     public String toString() {
-        return "Role{" + "Id=" + Id + ", Name=" + Name + '}';
+        return "Voucher{" + "Id=" + Id + ", name=" + name + '}';
     }
-
-    public Role() {
-    }
+    
+    
 
     public int getId() {
         return Id;
@@ -36,11 +40,11 @@ public class Role {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

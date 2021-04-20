@@ -3,28 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.role;
+package model.paymentMethod;
 
 /**
  *
  * @author droperdev
  */
-public class Role {
+public class PaymentMethod {
 
     private int Id;
-    private String Name;
+    private String name;
 
-    public Role(int Id, String Name) {
+    public PaymentMethod() {
+    }
+
+    public PaymentMethod(int Id, String name) {
         this.Id = Id;
-        this.Name = Name;
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return "Role{" + "Id=" + Id + ", Name=" + Name + '}';
-    }
-
-    public Role() {
+        return "PaymentMethod{" + "Id=" + Id + ", name=" + name + '}';
     }
 
     public int getId() {
@@ -36,11 +36,10 @@ public class Role {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String Name) {
-        this.Name = Name;
+        this.name = Name;
     }
-
 }
