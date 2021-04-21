@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : droperdev
 */
 
+body{
+    background: url('../assets/background.jpg') no-repeat center center fixed;
+}
+
 .content-login {
     position: absolute;
     display: flex;

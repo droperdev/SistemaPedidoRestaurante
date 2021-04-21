@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Contraseña</label>
-                    <input id="password" class="form-control" type="password" name="password"/>
+                    <input id="password" class="form-control" maxlength="6" type="password" name="password"/>
                 </div>
                 <input class="btn btn-primary btn-block" type="submit" value="Iniciar sesion">
                 <% if (message != null) {%>
