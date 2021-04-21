@@ -6,6 +6,9 @@
 package model.orderDetail;
 
 import config.Conexion;
+import dto.CategoryDTO;
+import dto.OrderDetailDTO;
+import dto.ProductDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,20 +32,37 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
     ResultSet rs;
 
     @Override
-    public List<OrderDetail> get(int orderId) {
-        List<OrderDetail> orderDetails = new ArrayList<>();
-        OrderDetail orderDetail = null;
-        String query = "SELECT * FROM OrderDetail WHERE OrderId=?";
+    public List<OrderDetailDTO> get(int orderId) {
+        List<OrderDetailDTO> orderDetails = new ArrayList<>();
+        OrderDetailDTO orderDetail = null;
+        String query
+                = "SELECT od.Id, od.Quantity, od.Price, od.CreateAt, "
+                + "od.ProductId, p.Name ProductName, p.Description, p.Price, "
+                + "p.CategoryId, c.Name CategoryName "
+                + "FROM OrderDetail od "
+                + "INNER JOIN Product p ON od.ProductId = p.Id "
+                + "INNER JOIN Category c ON p.CategoryId = c.Id "
+                + "WHERE od.OrderId=?";
         con = cn.getConnection();
         try {
             ps = con.prepareStatement(query);
             ps.setInt(1, orderId);
             rs = ps.executeQuery();
             while (rs.next()) {
-                orderDetail = new OrderDetail();
+                orderDetail = new OrderDetailDTO();
                 orderDetail.setId(rs.getInt("Id"));
-                orderDetail.setOrderId(rs.getInt("OrderId"));
-                orderDetail.setProductId(rs.getInt("ProductId"));
+                orderDetail.setProduct(
+                        new ProductDTO(
+                                rs.getInt("ProductId"),
+                                new CategoryDTO(
+                                        rs.getInt("CategoryId"),
+                                        rs.getString("CategoryName")
+                                ),
+                                rs.getString("ProductName"),
+                                rs.getString("Description"),
+                                rs.getDouble("Price")
+                        )
+                );
                 orderDetail.setQuantity(rs.getInt("Quantity"));
                 orderDetail.setPrice(rs.getDouble("Price"));
                 orderDetail.setCreatedAt(rs.getDate("CreateAt"));

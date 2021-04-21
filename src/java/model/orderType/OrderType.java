@@ -6,37 +6,37 @@
 package model.orderType;
 
 public class OrderType {
-    private int Id;
-    private String Name;
+
+    private int id;
+    private String name;
 
     public OrderType() {
     }
 
-    public OrderType(int Id, String Name) {
-        this.Id = Id;
-        this.Name = Name;
+    public OrderType(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return "OrderType{" + "Id=" + Id + ", Name=" + Name + '}';
-    }
-    
-    public int getId() {
-        return Id;
+        return "OrderType{" + "id=" + id + ", name=" + name + '}';
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        this.name = name;
     }
-    
-    
+
 }

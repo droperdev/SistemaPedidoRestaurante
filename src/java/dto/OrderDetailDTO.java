@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.orderDetail;
+package dto;
 
 import java.sql.Date;
 
@@ -11,22 +11,22 @@ import java.sql.Date;
  *
  * @author droperdev
  */
-public class OrderDetail {
+public class OrderDetailDTO {
 
     private int id;
-    private int orderId;
-    private int productId;
+    private ProductDTO product;
     private int quantity;
     private Double price;
     private Date createdAt;
 
-    public OrderDetail() {
+    public OrderDetailDTO() {
     }
 
     @Override
     public String toString() {
-        return "OrderDetail{" + "id=" + id + ", orderId=" + orderId + ", productId=" + productId + ", quantity=" + quantity + ", price=" + price + ", createdAt=" + createdAt + '}';
+        return "OrderDetailDTO{" + "id=" + id + ", product=" + product + ", quantity=" + quantity + ", price=" + price + ", createdAt=" + createdAt + '}';
     }
+    
 
     public int getId() {
         return id;
@@ -36,20 +36,12 @@ public class OrderDetail {
         this.id = id;
     }
 
-    public int getOrderId() {
-        return orderId;
+    public ProductDTO getProduct() {
+        return product;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
-
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public void setProduct(ProductDTO product) {
+        this.product = product;
     }
 
     public int getQuantity() {
@@ -75,7 +67,7 @@ public class OrderDetail {
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
-
+    
+ 
    
-
 }

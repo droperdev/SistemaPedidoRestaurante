@@ -12,17 +12,19 @@ import java.sql.Date;
  * @author IVAN
  */
 public class Category {
+
     private int id;
     private String name;
-    private Date CreatedAt;  
+    private Date createdAt;
+
+    public Category() {
+    }
 
     @Override
     public String toString() {
-        return "Category{" + "id=" + id + ", name=" + name + ", CreatedAt=" + CreatedAt + '}';
+        return "Category{" + "id=" + id + ", name=" + name + ", createdAt=" + createdAt + '}';
     }
 
-    
-    
     public int getId() {
         return id;
     }
@@ -40,12 +42,11 @@ public class Category {
     }
 
     public Date getCreatedAt() {
-        return CreatedAt;
+        return createdAt;
     }
 
-    public void setCreatedAt(Date CreatedAt) {
-        this.CreatedAt = CreatedAt;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
-    
-    
+
 }

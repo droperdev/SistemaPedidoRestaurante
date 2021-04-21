@@ -6,6 +6,7 @@
 package test;
 
 import dto.OrderDTO;
+import dto.OrderDetailDTO;
 import dto.UserDTO;
 import java.util.List;
 import model.order.OrderDAOImpl;
@@ -34,17 +35,16 @@ public class Test {
         System.out.println("User: " + user.toString());
 
         OrderDAOImpl orderDAO = new OrderDAOImpl();
-        int[] ids = {1,2,3};
+        int[] ids = {1, 2, 3};
         List<OrderDTO> orders = orderDAO.getAll(ids);
 
         for (OrderDTO order : orders) {
             System.out.println("Order: " + order.toString());
         }
-        
-        OrderDetailDAOImpl orderDetailDAO = new OrderDetailDAOImpl();
-        List<OrderDetail> orderDetails = orderDetailDAO.get(1);
 
-        for (OrderDetail orderDetail : orderDetails) {
+        OrderDetailDAOImpl orderDetailDAO = new OrderDetailDAOImpl();
+        List<OrderDetailDTO> orderDetails = orderDetailDAO.get(5);
+        for (OrderDetailDTO orderDetail : orderDetails) {
             System.out.println("OrderDetail: " + orderDetail.toString());
         }
 

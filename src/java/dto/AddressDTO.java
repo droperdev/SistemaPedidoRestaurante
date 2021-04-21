@@ -11,68 +11,61 @@ package dto;
  */
 public class AddressDTO {
 
-    private int Id;
-    private String Address;
-    private String References;
-    private Double Latitude;
-    private Double Longitude;
+    private int id;
+    private String address;
+    private String reference;
+    private Double latitude;
+    private Double longitude;
 
     public AddressDTO() {
     }
 
-    public AddressDTO(int Id, String Address, String References, Double Latitude, Double Longitude) {
-        this.Id = Id;
-        this.Address = Address;
-        this.References = References;
-        this.Latitude = Latitude;
-        this.Longitude = Longitude;
+    public AddressDTO(int id, String address, String reference, Double latitude, Double longitude) {
+        this.id = id;
+        this.address = address;
+        this.reference = reference;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
-    @Override
-    public String toString() {
-        return "AddressDTO{" + "Id=" + Id + ", Address=" + Address + ", References=" + References + ", Latitude=" + Latitude + ", Longitude=" + Longitude + '}';
-    }
-
-    
-    
     public int getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
-    public void setAddress(String Address) {
-        this.Address = Address;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getReferences() {
-        return References;
+    public String getReference() {
+        return reference;
     }
 
-    public void setReferences(String References) {
-        this.References = References;
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     public Double getLatitude() {
-        return Latitude;
+        return latitude;
     }
 
-    public void setLatitude(Double Latitude) {
-        this.Latitude = Latitude;
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
     }
 
     public Double getLongitude() {
-        return Longitude;
+        return longitude;
     }
 
-    public void setLongitude(Double Longitude) {
-        this.Longitude = Longitude;
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 
 }

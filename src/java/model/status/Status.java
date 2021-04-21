@@ -12,19 +12,19 @@ package model.status;
 public class Status {
 
     private int id;
-    private String Name;
+    private String name;
 
     public Status() {
     }
 
-    public Status(int id, String Name) {
+    public Status(int id, String name) {
         this.id = id;
-        this.Name = Name;
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return "Status{" + "id=" + id + ", Name=" + Name + '}';
+        return "Status{" + "id=" + id + ", Name=" + name + '}';
     }
 
     public int getId() {
@@ -36,11 +36,11 @@ public class Status {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getClassName() {

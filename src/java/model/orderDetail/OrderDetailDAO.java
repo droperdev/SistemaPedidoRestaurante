@@ -5,6 +5,7 @@
  */
 package model.orderDetail;
 
+import dto.OrderDetailDTO;
 import java.util.List;
 
 /**
@@ -13,5 +14,5 @@ import java.util.List;
  */
 public interface OrderDetailDAO {
 
-    public List<OrderDetail> get(int orderId);
+    public List<OrderDetailDTO> get(int orderId);
 }

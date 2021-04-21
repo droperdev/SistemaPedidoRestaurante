@@ -12,104 +12,104 @@ import java.sql.Date;
  * @author droperdev
  */
 public class Order {
-    private int Id;
-    private int ClientId;
-    private int AddressId;
-    private int StatusId;
-    private int VoucherId;
-    private int OrderTypeId;
-    private int PaymentMethodId;
-    private int DistributorId;
-    private Date CreatedAt;
-    private Date UpdatedAt;
+
+    private int id;
+    private int clientId;
+    private int addressId;
+    private int statusId;
+    private int voucherId;
+    private int orderTypeId;
+    private int paymentMethodId;
+    private int distributorId;
+    private Date createdAt;
+    private Date updatedAt;
 
     public Order() {
     }
 
     @Override
     public String toString() {
-        return "Order{" + "Id=" + Id + ", ClientId=" + ClientId + ", AddressId=" + AddressId + ", StatusId=" + StatusId + ", VoucherId=" + VoucherId + ", OrderTypeId=" + OrderTypeId + ", PaymentMethodId=" + PaymentMethodId + ", DistributorId=" + DistributorId + ", CreatedAt=" + CreatedAt + ", UpdatedAt=" + UpdatedAt + '}';
+        return "Order{" + "id=" + id + ", clientId=" + clientId + ", addressId=" + addressId + ", statusId=" + statusId + ", voucherId=" + voucherId + ", orderTypeId=" + orderTypeId + ", paymentMethodId=" + paymentMethodId + ", distributorId=" + distributorId + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getClientId() {
-        return ClientId;
+        return clientId;
     }
 
-    public void setClientId(int ClientId) {
-        this.ClientId = ClientId;
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
     }
 
     public int getAddressId() {
-        return AddressId;
+        return addressId;
     }
 
-    public void setAddressId(int AddressId) {
-        this.AddressId = AddressId;
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
     }
 
     public int getStatusId() {
-        return StatusId;
+        return statusId;
     }
 
-    public void setStatusId(int StatusId) {
-        this.StatusId = StatusId;
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
     }
 
     public int getVoucherId() {
-        return VoucherId;
+        return voucherId;
     }
 
-    public void setVoucherId(int VoucherId) {
-        this.VoucherId = VoucherId;
+    public void setVoucherId(int voucherId) {
+        this.voucherId = voucherId;
     }
 
     public int getOrderTypeId() {
-        return OrderTypeId;
+        return orderTypeId;
     }
 
-    public void setOrderTypeId(int OrderTypeId) {
-        this.OrderTypeId = OrderTypeId;
+    public void setOrderTypeId(int orderTypeId) {
+        this.orderTypeId = orderTypeId;
     }
 
     public int getPaymentMethodId() {
-        return PaymentMethodId;
+        return paymentMethodId;
     }
 
-    public void setPaymentMethodId(int PaymentMethodId) {
-        this.PaymentMethodId = PaymentMethodId;
+    public void setPaymentMethodId(int paymentMethodId) {
+        this.paymentMethodId = paymentMethodId;
     }
 
     public int getDistributorId() {
-        return DistributorId;
+        return distributorId;
     }
 
-    public void setDistributorId(int DistributorId) {
-        this.DistributorId = DistributorId;
+    public void setDistributorId(int distributorId) {
+        this.distributorId = distributorId;
     }
 
     public Date getCreatedAt() {
-        return CreatedAt;
+        return createdAt;
     }
 
-    public void setCreatedAt(Date CreatedAt) {
-        this.CreatedAt = CreatedAt;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public Date getUpdatedAt() {
-        return UpdatedAt;
+        return updatedAt;
     }
 
-    public void setUpdatedAt(Date UpdatedAt) {
-        this.UpdatedAt = UpdatedAt;
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
-    
-    
+
 }

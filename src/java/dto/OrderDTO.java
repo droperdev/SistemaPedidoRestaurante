@@ -17,126 +17,112 @@ import model.voucher.Voucher;
  */
 public class OrderDTO {
 
-    private int Id;
-    private ClientDTO Client;
-    private AddressDTO Address;
-    private Status Status;
-    private Voucher Voucher;
-    private OrderType OrderType;
-    private PaymentMethod PaymentMethod;
-    private UserDTO Distributor;
-    private Double Total;
-    private Date CreatedAt;
-    private Date UpdatedAt;
+    private int id;
+    private ClientDTO client;
+    private AddressDTO address;
+    private Status status;
+    private Voucher voucher;
+    private OrderType orderType;
+    private PaymentMethod paymentMethod;
+    private UserDTO distributor;
+    private Double total;
+    private Date createdAt;
+    private Date updatedAt;
 
     public OrderDTO() {
     }
 
-    public OrderDTO(int Id, ClientDTO Client, AddressDTO Address, Status Status, Voucher Voucher, OrderType OrderType, PaymentMethod PaymentMethod, UserDTO Distributor, Double Total, Date CreatedAt, Date UpdatedAt) {
-        this.Id = Id;
-        this.Client = Client;
-        this.Address = Address;
-        this.Status = Status;
-        this.Voucher = Voucher;
-        this.OrderType = OrderType;
-        this.PaymentMethod = PaymentMethod;
-        this.Distributor = Distributor;
-        this.Total = Total;
-        this.CreatedAt = CreatedAt;
-        this.UpdatedAt = UpdatedAt;
-    }
-
     @Override
     public String toString() {
-        return "OrderDTO{" + "Id=" + Id + ", Client=" + Client + ", Address=" + Address + ", Status=" + Status + ", Voucher=" + Voucher + ", OrderType=" + OrderType + ", PaymentMethod=" + PaymentMethod + ", Distributor=" + Distributor + ", CreatedAt=" + CreatedAt + ", UpdatedAt=" + UpdatedAt + '}';
+        return "OrderDTO{" + "id=" + id + ", client=" + client + ", address=" + address + ", status=" + status + ", voucher=" + voucher + ", orderType=" + orderType + ", paymentMethod=" + paymentMethod + ", distributor=" + distributor + ", total=" + total + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public ClientDTO getClient() {
-        return Client;
+        return client;
     }
 
-    public void setClient(ClientDTO Client) {
-        this.Client = Client;
+    public void setClient(ClientDTO client) {
+        this.client = client;
     }
 
     public AddressDTO getAddress() {
-        return Address;
+        return address;
     }
 
-    public void setAddress(AddressDTO Address) {
-        this.Address = Address;
+    public void setAddress(AddressDTO address) {
+        this.address = address;
     }
 
     public Status getStatus() {
-        return Status;
+        return status;
     }
 
-    public void setStatus(Status Status) {
-        this.Status = Status;
-    }
-
-    public OrderType getOrderType() {
-        return OrderType;
-    }
-
-    public void setOrderType(OrderType OrderType) {
-        this.OrderType = OrderType;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public Voucher getVoucher() {
-        return Voucher;
+        return voucher;
     }
 
-    public void setVoucher(Voucher Voucher) {
-        this.Voucher = Voucher;
+    public void setVoucher(Voucher voucher) {
+        this.voucher = voucher;
+    }
+
+    public OrderType getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(OrderType orderType) {
+        this.orderType = orderType;
     }
 
     public PaymentMethod getPaymentMethod() {
-        return PaymentMethod;
+        return paymentMethod;
     }
 
-    public void setPaymentMethod(PaymentMethod PaymentMethod) {
-        this.PaymentMethod = PaymentMethod;
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
     public UserDTO getDistributor() {
-        return Distributor;
+        return distributor;
     }
 
-    public void setDistributor(UserDTO Distributor) {
-        this.Distributor = Distributor;
+    public void setDistributor(UserDTO distributor) {
+        this.distributor = distributor;
     }
 
     public Double getTotal() {
-        return Total;
+        return total;
     }
 
-    public void setTotal(Double Total) {
-        this.Total = Total;
+    public void setTotal(Double total) {
+        this.total = total;
     }
 
     public Date getCreatedAt() {
-        return CreatedAt;
+        return createdAt;
     }
 
-    public void setCreatedAt(Date CreatedAt) {
-        this.CreatedAt = CreatedAt;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public Date getUpdatedAt() {
-        return UpdatedAt;
+        return updatedAt;
     }
 
-    public void setUpdatedAt(Date UpdatedAt) {
-        this.UpdatedAt = UpdatedAt;
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
 }

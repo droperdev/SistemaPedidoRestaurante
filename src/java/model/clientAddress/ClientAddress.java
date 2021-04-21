@@ -1,83 +1,79 @@
-
 package model.clientAddress;
 
 import java.sql.Date;
 
-
 public class ClientAddress {
-   private int Id;
-   private int ClientId;
-   private String Address;
-   private String Reference;
-   private Double Latitude;
-   private Double Longitude;
-   private Date CreatedAt;
+
+    private int id;
+    private int clientId;
+    private String address;
+    private String reference;
+    private Double latitude;
+    private Double longitude;
+    private Date createdAt;
 
     public ClientAddress() {
     }
 
     @Override
     public String toString() {
-        return "ClientAddress{" + "Id=" + Id + ", ClientId=" + ClientId + ", Address=" + Address + ", Reference=" + Reference + ", Latitude=" + Latitude + ", Longitude=" + Longitude + ", CreatedAt=" + CreatedAt + '}';
+        return "ClientAddress{" + "id=" + id + ", clientId=" + clientId + ", address=" + address + ", reference=" + reference + ", latitude=" + latitude + ", longitude=" + longitude + ", createdAt=" + createdAt + '}';
     }
 
-    
-    
     public int getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getClientId() {
-        return ClientId;
+        return clientId;
     }
 
-    public void setClientId(int ClientId) {
-        this.ClientId = ClientId;
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
-    public void setAddress(String Address) {
-        this.Address = Address;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getReference() {
-        return Reference;
+        return reference;
     }
 
-    public void setReference(String Reference) {
-        this.Reference = Reference;
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     public Double getLatitude() {
-        return Latitude;
+        return latitude;
     }
 
-    public void setLatitude(Double Latitude) {
-        this.Latitude = Latitude;
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
     }
 
     public Double getLongitude() {
-        return Longitude;
+        return longitude;
     }
 
-    public void setLongitude(Double Longitude) {
-        this.Longitude = Longitude;
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 
     public Date getCreatedAt() {
-        return CreatedAt;
+        return createdAt;
     }
 
-    public void setCreatedAt(Date CreatedAt) {
-        this.CreatedAt = CreatedAt;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
-   
-    
-}   
+
+}

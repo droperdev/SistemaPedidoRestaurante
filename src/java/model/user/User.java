@@ -5,7 +5,6 @@
  */
 package model.user;
 
-import java.lang.reflect.Field;
 import java.sql.Date;
 
 /**
@@ -14,89 +13,85 @@ import java.sql.Date;
  */
 public class User {
 
-    private int Id;
-    private int RoleId;
-    private String Name;
-    private String LastName;
-    private String UserName;
-    private String Password;
-    private Date CreatedAt;
-    private boolean Status;
+    private int id;
+    private int roleId;
+    private String name;
+    private String lastName;
+    private String userName;
+    private String password;
+    private Date createdAt;
+    private boolean status;
 
     public User() {
     }
 
     @Override
     public String toString() {
-        return "User{" + "Id=" + Id + ", RoleId=" + RoleId + ", Name=" + Name + ", LastName=" + LastName + ", UserName=" + UserName + ", Password=" + Password + ", CreatedAt=" + CreatedAt + ", Status=" + Status + '}';
+        return "User{" + "id=" + id + ", roleId=" + roleId + ", name=" + name + ", lastName=" + lastName + ", userName=" + userName + ", password=" + password + ", createdAt=" + createdAt + ", status=" + status + '}';
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getRoleId() {
-        return RoleId;
+        return roleId;
     }
 
-    public void setRoleId(int RoleId) {
-        this.RoleId = RoleId;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
-    public void setLastName(String LastName) {
-        this.LastName = LastName;
-    }
-
-    public String getFullName() {
-        return Name + " " + LastName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getUserName() {
-        return UserName;
+        return userName;
     }
 
-    public void setUserName(String UserName) {
-        this.UserName = UserName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
-    public void setPassword(String Password) {
-        this.Password = Password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Date getCreatedAt() {
-        return CreatedAt;
+        return createdAt;
     }
 
-    public void setCreatedAt(Date CreatedAt) {
-        this.CreatedAt = CreatedAt;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public boolean isStatus() {
-        return Status;
+        return status;
     }
 
-    public void setStatus(boolean Status) {
-        this.Status = Status;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
 }
