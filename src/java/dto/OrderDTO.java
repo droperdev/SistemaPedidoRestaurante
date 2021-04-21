@@ -25,13 +25,14 @@ public class OrderDTO {
     private OrderType OrderType;
     private PaymentMethod PaymentMethod;
     private UserDTO Distributor;
+    private Double Total;
     private Date CreatedAt;
     private Date UpdatedAt;
 
     public OrderDTO() {
     }
 
-    public OrderDTO(int Id, ClientDTO Client, AddressDTO Address, Status Status, Voucher Voucher, OrderType OrderType, PaymentMethod PaymentMethod, UserDTO Distributor, Date CreatedAt, Date UpdatedAt) {
+    public OrderDTO(int Id, ClientDTO Client, AddressDTO Address, Status Status, Voucher Voucher, OrderType OrderType, PaymentMethod PaymentMethod, UserDTO Distributor, Double Total, Date CreatedAt, Date UpdatedAt) {
         this.Id = Id;
         this.Client = Client;
         this.Address = Address;
@@ -40,6 +41,7 @@ public class OrderDTO {
         this.OrderType = OrderType;
         this.PaymentMethod = PaymentMethod;
         this.Distributor = Distributor;
+        this.Total = Total;
         this.CreatedAt = CreatedAt;
         this.UpdatedAt = UpdatedAt;
     }
@@ -89,22 +91,6 @@ public class OrderDTO {
         this.OrderType = OrderType;
     }
 
-    public Date getCreatedAt() {
-        return CreatedAt;
-    }
-
-    public void setCreatedAt(Date CreatedAt) {
-        this.CreatedAt = CreatedAt;
-    }
-
-    public Date getUpdatedAt() {
-        return UpdatedAt;
-    }
-
-    public void setUpdatedAt(Date UpdatedAt) {
-        this.UpdatedAt = UpdatedAt;
-    }
-
     public Voucher getVoucher() {
         return Voucher;
     }
@@ -127,6 +113,30 @@ public class OrderDTO {
 
     public void setDistributor(UserDTO Distributor) {
         this.Distributor = Distributor;
+    }
+
+    public Double getTotal() {
+        return Total;
+    }
+
+    public void setTotal(Double Total) {
+        this.Total = Total;
+    }
+
+    public Date getCreatedAt() {
+        return CreatedAt;
+    }
+
+    public void setCreatedAt(Date CreatedAt) {
+        this.CreatedAt = CreatedAt;
+    }
+
+    public Date getUpdatedAt() {
+        return UpdatedAt;
+    }
+
+    public void setUpdatedAt(Date UpdatedAt) {
+        this.UpdatedAt = UpdatedAt;
     }
 
 }

@@ -46,8 +46,10 @@ public class OrderDAOImpl implements OrderDAO {
                 + "o.VoucherId, v.Name VoucherName, "
                 + "o.OrderTypeId, ot.Name OrderTypeName, "
                 + "o.PaymentMethodId, pm.Name PaymentMethodName, "
-                + "o.DistribuitorId, u.Name DistribuitorName, u.LastName DistribuitorLastName "
+                + "o.DistribuitorId, u.Name DistribuitorName, u.LastName DistribuitorLastName, "
+                + "SUM(od.Quantity * od.Price) Total "
                 + "FROM `Order` o "
+                + "INNER JOIN OrderDetail od ON o.Id = od.OrderId "
                 + "INNER JOIN Client c ON c.Id = o.ClientId "
                 + "INNER JOIN ClientAddress ca ON ca.Id = o.AddressId "
                 + "INNER JOIN Status s ON s.Id = o.StatusId "
@@ -62,6 +64,7 @@ public class OrderDAOImpl implements OrderDAO {
         }
         concat += concat.substring(0, concat.length() - 1);
         query += "WHERE o.StatusId IN(" + concat + ")";
+        query += "GROUP BY o.Id";
 
         con = cn.getConnection();
         try {
@@ -100,7 +103,7 @@ public class OrderDAOImpl implements OrderDAO {
                 );
                 order.setOrderType(
                         new OrderType(
-                                 rs.getInt("OrderTypeId"),
+                                rs.getInt("OrderTypeId"),
                                 rs.getString("OrderTypeName")
                         )
                 );
@@ -117,6 +120,7 @@ public class OrderDAOImpl implements OrderDAO {
                                 rs.getString("DistribuitorLastName")
                         )
                 );
+                order.setTotal(rs.getDouble("Total"));
                 orders.add(order);
             }
         } catch (SQLException ex) {
