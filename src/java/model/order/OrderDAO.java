@@ -6,7 +6,6 @@
 package model.order;
 
 import dto.OrderDTO;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,5 +13,6 @@ import java.util.List;
  * @author droperdev
  */
 public interface OrderDAO {
+    public OrderDTO get(int orderId);
     public List<OrderDTO> getAll(int[] ints);
 }

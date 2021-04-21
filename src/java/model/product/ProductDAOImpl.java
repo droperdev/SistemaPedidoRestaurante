@@ -19,17 +19,16 @@ import java.util.logging.Logger;
  *
  * @author IVAN
  */
-public class ProductDAOImpl implements ProductDAO{
-    
+public class ProductDAOImpl implements ProductDAO {
+
     Conexion cn = new Conexion();
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
-    
+
     @Override
     public List<Product> list(int idCategory) {
-        
-        ArrayList<Product> lista = new ArrayList<>();
+        List<Product> products = new ArrayList<>();
         Product product = null;
         String query = "SELECT * FROM Product WHERE CategoryId=?";
         con = cn.getConnection();
@@ -46,12 +45,12 @@ public class ProductDAOImpl implements ProductDAO{
                 product.setPrice(rs.getDouble("Price"));
                 product.setCreatedAt(rs.getDate("CreatedAt"));
                 product.setStatus(rs.getBoolean("Status"));
-                lista.add(product);
+                products.add(product);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ProductDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return lista;
+        return products;
     }
-    
+
 }

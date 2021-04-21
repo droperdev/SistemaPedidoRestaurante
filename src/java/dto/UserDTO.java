@@ -13,68 +13,66 @@ import model.role.Role;
  */
 public class UserDTO {
 
-    private int Id;
-    private Role Role;
-    private String Name;
-    private String LastName;
+    private int id;
+    private Role role;
+    private String name;
+    private String lastName;
 
     public UserDTO() {
     }
 
-    public UserDTO(int Id, Role Role, String Name, String LastName) {
-        this.Id = Id;
-        this.Role = Role;
-        this.Name = Name;
-        this.LastName = LastName;
+    public UserDTO(int id, Role role, String name, String lastName) {
+        this.id = id;
+        this.role = role;
+        this.name = name;
+        this.lastName = lastName;
     }
 
-    public UserDTO(int Id, String Name, String LastName) {
-        this.Id = Id;
-        this.Name = Name;
-        this.LastName = LastName;
+    public UserDTO(int id, String name, String lastName) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
     }
 
     @Override
     public String toString() {
-        return "UserDTO{" + "Id=" + Id + ", Role=" + Role + ", Name=" + Name + ", LastName=" + LastName + '}';
+        return "UserDTO{" + "id=" + id + ", role=" + role + ", name=" + name + ", lastName=" + lastName + '}';
     }
-
-    
 
     public int getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Role getRole() {
-        return Role;
+        return role;
     }
 
     public void setRole(Role role) {
-        this.Role = role;
+        this.role = role;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
-    public void setLastName(String LastName) {
-        this.LastName = LastName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getFullName() {
-        return Name + " " + LastName;
+        return this.name + " " + this.lastName;
     }
 
 }

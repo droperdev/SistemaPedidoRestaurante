@@ -20,6 +20,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Sistema Restaurant</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet"  href="css/main.css" >
         <link rel="stylesheet"  href="css/menu.css" >
         <link rel="stylesheet"  href="css/header.css" >
@@ -70,19 +71,23 @@
         </div>
 
         <div class="content">
-            <% int[] ids = {1,2,3}; %>
+            <% int[] ids = {1, 2, 3}; %>
             <% List<OrderDTO> orders = new OrderDAOImpl().getAll(ids); %>
-            <div class="table-responsive">
+            <div class="card table-responsive">
                 <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>Id</th>
                             <th>Cliente</th>
-                            <th>AddressId</th>
+                            <th>Dirección</th>
                             <th>Método de Pago</th>
                             <th>Voucher</th>
+                            <th>Tipo de pedido </th>
                             <th>Distribuidor</th>
-                            <th>Acciones</th>
+                            <th>Total</th>
+                            <th class="text-center">Estado</th>
+                            <th></th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -92,19 +97,53 @@
                         <tr>
                             <td><%=order.getId()%></td>
                             <td><%=order.getClient().getName() + " " + order.getClient().getLastName()%></td>
-                            <td><%=order.getAddressId()%></td>
+                            <td>
+                                <%=order.getAddress().getAddress()%> <br>
+                                <%=order.getAddress().getReference()%>
+                            </td>
                             <td><%=order.getPaymentMethod().getName()%></td>
                             <td><%=order.getVoucher().getName()%></td>
-                            <td><%=order.getDistributor().getName() + " " + order.getDistributor().getLastName()%></td>
-                            <td><a href="">Ver</a></td>
+                            <td><%=order.getOrderType().getName()%></td>
+                            <td class="font-weight-bold"><%=order.getDistributor().getName() + " " + order.getDistributor().getLastName()%></td>
+                            <td class="font-weight-bold text-success">S/ <%=String.format("%.2f", order.getTotal())%></td>
+                            <td class="text-center"><span class="<%=order.getStatus().getClassName()%>"><%=order.getStatus().getName()%></span></td>
+                            <td class="text-center">
+                                <div class="dropdown">
+                                    <a class="btn fa fa-ellipsis-v" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <button class="dropdown-item" ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Asignar pedido</button>
+                                        <button class="dropdown-item" onclick="openDetail('<%=order.getId()%>');"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;Ver pedido</button>
+                                        <button class="dropdown-item" ><i class="fa fa-map"></i>&nbsp;&nbsp;&nbsp;Ver mapa</button>
+                                        <button class="dropdown-item" ><i class="fa fa-spinner"></i>&nbsp;&nbsp;&nbsp;Cambiar de estado</button>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                         <% }%>
                     </tbody>
                 </table>
             </div>
+            <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="MyModalLabel" >
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="MyModalLabel"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="content-modal">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="scripts/main.js"></script>
     </body>
 </html>
 <%

@@ -1,23 +1,31 @@
-package model.clientAddress;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dto;
 
-import java.sql.Date;
-
-public class ClientAddress {
+/**
+ *
+ * @author droperdev
+ */
+public class AddressDTO {
 
     private int id;
-    private int clientId;
     private String address;
     private String reference;
     private Double latitude;
     private Double longitude;
-    private Date createdAt;
 
-    public ClientAddress() {
+    public AddressDTO() {
     }
 
-    @Override
-    public String toString() {
-        return "ClientAddress{" + "id=" + id + ", clientId=" + clientId + ", address=" + address + ", reference=" + reference + ", latitude=" + latitude + ", longitude=" + longitude + ", createdAt=" + createdAt + '}';
+    public AddressDTO(int id, String address, String reference, Double latitude, Double longitude) {
+        this.id = id;
+        this.address = address;
+        this.reference = reference;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public int getId() {
@@ -26,14 +34,6 @@ public class ClientAddress {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
     }
 
     public String getAddress() {
@@ -66,14 +66,6 @@ public class ClientAddress {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
     }
 
 }

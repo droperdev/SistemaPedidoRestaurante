@@ -3,28 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.voucher;
+package dto;
 
 /**
  *
  * @author droperdev
  */
-public class Voucher {
+public class CategoryDTO {
 
     private int id;
     private String name;
 
-    public Voucher() {
-    }
-
-    public Voucher(int id, String name) {
-        this.id = id;
-        this.name = name;
+    public CategoryDTO() {
     }
 
     @Override
     public String toString() {
-        return "Voucher{" + "Id=" + id + ", name=" + name + '}';
+        return "CategoryDTO{" + "id=" + id + ", name=" + name + '}';
+    }
+
+    public CategoryDTO(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public int getId() {

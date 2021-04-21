@@ -1,84 +1,79 @@
-
 package model.client;
 
 import java.sql.Date;
 
-
 public class Client {
-   private int Id;
-   private String Name;
-   private String LastName;
-   private String Phone;
-   private String Email;
-   private Date Birthday;
-   private Date CreatedAt;
+
+    private int id;
+    private String name;
+    private String lastName;
+    private String phone;
+    private String email;
+    private Date birthday;
+    private Date createdAt;
 
     public Client() {
     }
 
     @Override
     public String toString() {
-        return "Client{" + "Id=" + Id + ", Name=" + Name + ", LastName=" + LastName + ", Phone=" + Phone + ", Email=" + Email + ", Birthday=" + Birthday + ", CreatedAt=" + CreatedAt + '}';
+        return "Client{" + "id=" + id + ", name=" + name + ", lastName=" + lastName + ", phone=" + phone + ", email=" + email + ", birthday=" + birthday + ", createdAt=" + createdAt + '}';
     }
-    
-    
 
     public int getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
-    public void setLastName(String LastName) {
-        this.LastName = LastName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
-    public void setPhone(String Phone) {
-        this.Phone = Phone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
-    public void setEmail(String Email) {
-        this.Email = Email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Date getBirthday() {
-        return Birthday;
+        return birthday;
     }
 
-    public void setBirthday(Date Birthday) {
-        this.Birthday = Birthday;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     public Date getCreatedAt() {
-        return CreatedAt;
+        return createdAt;
     }
 
-    public void setCreatedAt(Date CreatedAt) {
-        this.CreatedAt = CreatedAt;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
-   
-   
+
 }
-

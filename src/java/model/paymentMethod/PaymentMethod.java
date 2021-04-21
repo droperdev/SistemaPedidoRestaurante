@@ -11,28 +11,28 @@ package model.paymentMethod;
  */
 public class PaymentMethod {
 
-    private int Id;
+    private int id;
     private String name;
 
     public PaymentMethod() {
     }
 
-    public PaymentMethod(int Id, String name) {
-        this.Id = Id;
+    public PaymentMethod(int id, String name) {
+        this.id = id;
         this.name = name;
     }
 
     @Override
     public String toString() {
-        return "PaymentMethod{" + "Id=" + Id + ", name=" + name + '}';
+        return "PaymentMethod{" + "id=" + id + ", name=" + name + '}';
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int Id) {
-        this.Id = Id;
+        this.id = Id;
     }
 
     public String getName() {

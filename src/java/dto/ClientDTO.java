@@ -10,45 +10,39 @@ package dto;
  * @author droperdev
  */
 public class ClientDTO {
-    private int Id;
-    private String Name;
-    private String LastName;
 
-    public ClientDTO(int Id, String Name, String LastName) {
-        this.Id = Id;
-        this.Name = Name;
-        this.LastName = LastName;
-    }
+    private int id;
+    private String name;
+    private String lastName;
 
-    @Override
-    public String toString() {
-        return "ClientDTO{" + "Id=" + Id + ", Name=" + Name + ", LastName=" + LastName + '}';
+    public ClientDTO(int id, String name, String lastName) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
     }
-    
 
     public int getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
-    public void setLastName(String LastName) {
-        this.LastName = LastName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
-    
-    
+
 }

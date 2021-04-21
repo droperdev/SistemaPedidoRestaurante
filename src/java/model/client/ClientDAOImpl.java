@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 /**
  *
  * @author Administrador
@@ -27,7 +26,7 @@ public class ClientDAOImpl implements ClientDAO {
 
     @Override
     public Client getClient(int id) {
-Client client = null;
+        Client client = null;
         String query = "SELECT * FROM Client WHERE Id=?";
         con = cn.getConnection();
         try {

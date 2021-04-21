@@ -11,36 +11,36 @@ package model.role;
  */
 public class Role {
 
-    private int Id;
-    private String Name;
+    private int id;
+    private String name;
 
-    public Role(int Id, String Name) {
-        this.Id = Id;
-        this.Name = Name;
+    public Role(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return "Role{" + "Id=" + Id + ", Name=" + Name + '}';
+        return "Role{" + "Id=" + id + ", Name=" + name + '}';
     }
 
     public Role() {
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

@@ -6,7 +6,9 @@
 package dto;
 
 import java.sql.Date;
+import model.orderType.OrderType;
 import model.paymentMethod.PaymentMethod;
+import model.status.Status;
 import model.voucher.Voucher;
 
 /**
@@ -15,82 +17,112 @@ import model.voucher.Voucher;
  */
 public class OrderDTO {
 
-    private int Id;
-    private ClientDTO Client;
-    private int AddressId;
-    private int StatusId;
-    private Voucher Voucher;
-    private int OrderTypeId;
-    private PaymentMethod PaymentMethod;
-    private UserDTO Distributor;
-    private Date CreatedAt;
-    private Date UpdatedAt;
+    private int id;
+    private ClientDTO client;
+    private AddressDTO address;
+    private Status status;
+    private Voucher voucher;
+    private OrderType orderType;
+    private PaymentMethod paymentMethod;
+    private UserDTO distributor;
+    private Double total;
+    private Date createdAt;
+    private Date updatedAt;
 
     public OrderDTO() {
     }
 
     @Override
     public String toString() {
-        return "OrderDTO{" + "Id=" + Id + ", Client=" + Client + ", AddressId=" + AddressId + ", StatusId=" + StatusId + ", Voucher=" + Voucher + ", OrderTypeId=" + OrderTypeId + ", PaymentMethod=" + PaymentMethod + ", Distributor=" + Distributor + ", CreatedAt=" + CreatedAt + ", UpdatedAt=" + UpdatedAt + '}';
+        return "OrderDTO{" + "id=" + id + ", client=" + client + ", address=" + address + ", status=" + status + ", voucher=" + voucher + ", orderType=" + orderType + ", paymentMethod=" + paymentMethod + ", distributor=" + distributor + ", total=" + total + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
     }
-
-    
 
     public int getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public ClientDTO getClient() {
-        return Client;
+        return client;
     }
 
-    public void setClient(ClientDTO Client) {
-        this.Client = Client;
+    public void setClient(ClientDTO client) {
+        this.client = client;
     }
 
-    public int getAddressId() {
-        return AddressId;
+    public AddressDTO getAddress() {
+        return address;
     }
 
-    public void setAddressId(int AddressId) {
-        this.AddressId = AddressId;
+    public void setAddress(AddressDTO address) {
+        this.address = address;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public Voucher getVoucher() {
-        return Voucher;
+        return voucher;
     }
 
-    public void setVoucher(Voucher Voucher) {
-        this.Voucher = Voucher;
+    public void setVoucher(Voucher voucher) {
+        this.voucher = voucher;
+    }
+
+    public OrderType getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(OrderType orderType) {
+        this.orderType = orderType;
     }
 
     public PaymentMethod getPaymentMethod() {
-        return PaymentMethod;
+        return paymentMethod;
     }
 
-    public void setPaymentMethod(PaymentMethod PaymentMethod) {
-        this.PaymentMethod = PaymentMethod;
-    }
-
-    public int getStatusId() {
-        return StatusId;
-    }
-
-    public void setStatusId(int StatusId) {
-        this.StatusId = StatusId;
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
     public UserDTO getDistributor() {
-        return Distributor;
+        return distributor;
     }
 
-    public void setDistributor(UserDTO Distributor) {
-        this.Distributor = Distributor;
+    public void setDistributor(UserDTO distributor) {
+        this.distributor = distributor;
     }
-    
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 
 }
