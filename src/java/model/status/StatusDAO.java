@@ -12,5 +12,5 @@ import java.util.List;
  * @author IVAN
  */
 public interface StatusDAO {
-    List<Status> list();
+    List<Status> getAll();
 }

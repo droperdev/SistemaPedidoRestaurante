@@ -81,7 +81,9 @@
                             <th>AddressId</th>
                             <th>Método de Pago</th>
                             <th>Voucher</th>
+                            <th>Tipo de pedido</th>
                             <th>Distribuidor</th>
+                            <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -98,7 +100,9 @@
                             </td>
                             <td><%=order.getPaymentMethod().getName()%></td>
                             <td><%=order.getVoucher().getName()%></td>
-                            <td><%=order.getDistributor().getName() + " " + order.getDistributor().getLastName()%></td>
+                             <td><%=order.getOrderType().getName()%></td>
+                            <td class="font-weight-bold"><%=order.getDistributor().getName() + " " + order.getDistributor().getLastName()%></td>
+                            <td><span class="<%=order.getStatus().getClassName()%>"><%=order.getStatus().getName()%></span></td>
                             <td><a href="">Ver</a></td>
                         </tr>
                         <% }%>

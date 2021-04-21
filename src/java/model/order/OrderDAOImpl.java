@@ -18,7 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.orderType.OrderType;
 import model.paymentMethod.PaymentMethod;
+import model.status.Status;
 import model.voucher.Voucher;
 
 /**
@@ -40,13 +42,17 @@ public class OrderDAOImpl implements OrderDAO {
         String query
                 = "SELECT o.Id, o.ClientId, c.Name ClientName, c.LastName, "
                 + "o.AddressId, ca.Address, ca.Reference, ca.Latitude, ca.Longitude, "
+                + "o.StatusId, s.Name StatusName, "
                 + "o.VoucherId, v.Name VoucherName, "
+                + "o.OrderTypeId, ot.Name OrderTypeName, "
                 + "o.PaymentMethodId, pm.Name PaymentMethodName, "
                 + "o.DistribuitorId, u.Name DistribuitorName, u.LastName DistribuitorLastName "
                 + "FROM `Order` o "
                 + "INNER JOIN Client c ON c.Id = o.ClientId "
                 + "INNER JOIN ClientAddress ca ON ca.Id = o.AddressId "
+                + "INNER JOIN Status s ON s.Id = o.StatusId "
                 + "INNER JOIN Voucher v ON v.Id = o.VoucherId "
+                + "INNER JOIN OrderType ot ON ot.Id = o.OrderTypeId "
                 + "INNER JOIN PaymentMethod pm ON pm.Id = o.PaymentMethodId "
                 + "INNER JOIN User u ON u.Id = o.DistribuitorId ";
 
@@ -80,9 +86,37 @@ public class OrderDAOImpl implements OrderDAO {
                                 rs.getDouble("Longitude")
                         )
                 );
-                order.setVoucher(new Voucher(rs.getInt("VoucherId"), rs.getString("VoucherName")));
-                order.setPaymentMethod(new PaymentMethod(rs.getInt("PaymentMethodId"), rs.getString("PaymentMethodName")));
-                order.setDistributor(new UserDTO(rs.getInt("DistribuitorId"), rs.getString("DistribuitorName"), rs.getString("DistribuitorLastName")));
+                order.setStatus(
+                        new Status(
+                                rs.getInt("StatusId"),
+                                rs.getString("StatusName")
+                        )
+                );
+                order.setVoucher(
+                        new Voucher(
+                                rs.getInt("VoucherId"),
+                                rs.getString("VoucherName")
+                        )
+                );
+                order.setOrderType(
+                        new OrderType(
+                                 rs.getInt("OrderTypeId"),
+                                rs.getString("OrderTypeName")
+                        )
+                );
+                order.setPaymentMethod(
+                        new PaymentMethod(
+                                rs.getInt("PaymentMethodId"),
+                                rs.getString("PaymentMethodName")
+                        )
+                );
+                order.setDistributor(
+                        new UserDTO(
+                                rs.getInt("DistribuitorId"),
+                                rs.getString("DistribuitorName"),
+                                rs.getString("DistribuitorLastName")
+                        )
+                );
                 orders.add(order);
             }
         } catch (SQLException ex) {

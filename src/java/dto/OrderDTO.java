@@ -6,7 +6,9 @@
 package dto;
 
 import java.sql.Date;
+import model.orderType.OrderType;
 import model.paymentMethod.PaymentMethod;
+import model.status.Status;
 import model.voucher.Voucher;
 
 /**
@@ -18,9 +20,9 @@ public class OrderDTO {
     private int Id;
     private ClientDTO Client;
     private AddressDTO Address;
-    private int StatusId;
+    private Status Status;
     private Voucher Voucher;
-    private int OrderTypeId;
+    private OrderType OrderType;
     private PaymentMethod PaymentMethod;
     private UserDTO Distributor;
     private Date CreatedAt;
@@ -29,11 +31,13 @@ public class OrderDTO {
     public OrderDTO() {
     }
 
-    public OrderDTO(int Id, ClientDTO Client, AddressDTO Address, Voucher Voucher, PaymentMethod PaymentMethod, UserDTO Distributor, Date CreatedAt, Date UpdatedAt) {
+    public OrderDTO(int Id, ClientDTO Client, AddressDTO Address, Status Status, Voucher Voucher, OrderType OrderType, PaymentMethod PaymentMethod, UserDTO Distributor, Date CreatedAt, Date UpdatedAt) {
         this.Id = Id;
         this.Client = Client;
         this.Address = Address;
+        this.Status = Status;
         this.Voucher = Voucher;
+        this.OrderType = OrderType;
         this.PaymentMethod = PaymentMethod;
         this.Distributor = Distributor;
         this.CreatedAt = CreatedAt;
@@ -42,10 +46,8 @@ public class OrderDTO {
 
     @Override
     public String toString() {
-        return "OrderDTO{" + "Id=" + Id + ", Client=" + Client + ", Address=" + Address + ", StatusId=" + StatusId + ", Voucher=" + Voucher + ", OrderTypeId=" + OrderTypeId + ", PaymentMethod=" + PaymentMethod + ", Distributor=" + Distributor + ", CreatedAt=" + CreatedAt + ", UpdatedAt=" + UpdatedAt + '}';
+        return "OrderDTO{" + "Id=" + Id + ", Client=" + Client + ", Address=" + Address + ", Status=" + Status + ", Voucher=" + Voucher + ", OrderType=" + OrderType + ", PaymentMethod=" + PaymentMethod + ", Distributor=" + Distributor + ", CreatedAt=" + CreatedAt + ", UpdatedAt=" + UpdatedAt + '}';
     }
-    
-    
 
     public int getId() {
         return Id;
@@ -71,12 +73,20 @@ public class OrderDTO {
         this.Address = Address;
     }
 
-    public int getOrderTypeId() {
-        return OrderTypeId;
+    public Status getStatus() {
+        return Status;
     }
 
-    public void setOrderTypeId(int OrderTypeId) {
-        this.OrderTypeId = OrderTypeId;
+    public void setStatus(Status Status) {
+        this.Status = Status;
+    }
+
+    public OrderType getOrderType() {
+        return OrderType;
+    }
+
+    public void setOrderType(OrderType OrderType) {
+        this.OrderType = OrderType;
     }
 
     public Date getCreatedAt() {
@@ -109,14 +119,6 @@ public class OrderDTO {
 
     public void setPaymentMethod(PaymentMethod PaymentMethod) {
         this.PaymentMethod = PaymentMethod;
-    }
-
-    public int getStatusId() {
-        return StatusId;
-    }
-
-    public void setStatusId(int StatusId) {
-        this.StatusId = StatusId;
     }
 
     public UserDTO getDistributor() {

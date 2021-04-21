@@ -25,11 +25,10 @@ public class StatusDAOImpl implements StatusDAO {
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
-    
+
     @Override
-    public List<Status> list() {
-        
-        ArrayList<Status> lista = new ArrayList<>();
+    public List<Status> getAll() {
+        List<Status> list = new ArrayList<>();
         Status status = null;
         String query = "SELECT * FROM Status ";
         con = cn.getConnection();
@@ -40,12 +39,12 @@ public class StatusDAOImpl implements StatusDAO {
                 status = new Status();
                 status.setId(rs.getInt("Id"));
                 status.setName(rs.getString("Name"));
-                lista.add(status);
+                list.add(status);
             }
         } catch (SQLException ex) {
             Logger.getLogger(StatusDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return lista;
+        return list;
     }
-    
+
 }

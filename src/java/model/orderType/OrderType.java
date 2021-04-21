@@ -12,6 +12,11 @@ public class OrderType {
     public OrderType() {
     }
 
+    public OrderType(int Id, String Name) {
+        this.Id = Id;
+        this.Name = Name;
+    }
+
     @Override
     public String toString() {
         return "OrderType{" + "Id=" + Id + ", Name=" + Name + '}';
