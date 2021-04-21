@@ -6,6 +6,7 @@
 package model.order;
 
 import config.Conexion;
+import dto.AddressDTO;
 import dto.ClientDTO;
 import dto.OrderDTO;
 import dto.UserDTO;
@@ -37,12 +38,14 @@ public class OrderDAOImpl implements OrderDAO {
 
         OrderDTO order = null;
         String query
-                = "SELECT o.Id, o.ClientId, c.Name ClientName, c.LastName, o.AddressId, "
+                = "SELECT o.Id, o.ClientId, c.Name ClientName, c.LastName, "
+                + "o.AddressId, ca.Address, ca.Reference, ca.Latitude, ca.Longitude, "
                 + "o.VoucherId, v.Name VoucherName, "
                 + "o.PaymentMethodId, pm.Name PaymentMethodName, "
                 + "o.DistribuitorId, u.Name DistribuitorName, u.LastName DistribuitorLastName "
                 + "FROM `Order` o "
                 + "INNER JOIN Client c ON c.Id = o.ClientId "
+                + "INNER JOIN ClientAddress ca ON ca.Id = o.AddressId "
                 + "INNER JOIN Voucher v ON v.Id = o.VoucherId "
                 + "INNER JOIN PaymentMethod pm ON pm.Id = o.PaymentMethodId "
                 + "INNER JOIN User u ON u.Id = o.DistribuitorId ";
@@ -61,8 +64,22 @@ public class OrderDAOImpl implements OrderDAO {
             while (rs.next()) {
                 order = new OrderDTO();
                 order.setId(rs.getInt("Id"));
-                order.setClient(new ClientDTO(rs.getInt("ClientId"), rs.getString("ClientName"), rs.getString("LastName")));
-                order.setAddressId(rs.getInt("AddressId"));
+                order.setClient(
+                        new ClientDTO(
+                                rs.getInt("ClientId"),
+                                rs.getString("ClientName"),
+                                rs.getString("LastName")
+                        )
+                );
+                order.setAddress(
+                        new AddressDTO(
+                                rs.getInt("AddressId"),
+                                rs.getString("Address"),
+                                rs.getString("Reference"),
+                                rs.getDouble("Latitude"),
+                                rs.getDouble("Longitude")
+                        )
+                );
                 order.setVoucher(new Voucher(rs.getInt("VoucherId"), rs.getString("VoucherName")));
                 order.setPaymentMethod(new PaymentMethod(rs.getInt("PaymentMethodId"), rs.getString("PaymentMethodName")));
                 order.setDistributor(new UserDTO(rs.getInt("DistribuitorId"), rs.getString("DistribuitorName"), rs.getString("DistribuitorLastName")));

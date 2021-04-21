@@ -9,7 +9,13 @@ and open the template in the editor.
 */
 
 body{
+    width: 100vw;
+    height: 100vh;
     background: url('../assets/background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .content-login {
@@ -31,10 +37,10 @@ body{
 }
 
 .card {
-  background-color: white;
-  box-shadow: 0 4px 20px 1px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.08);
+    background-color: white;
+    box-shadow: 0 4px 20px 1px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.08);
 
-  padding: 16px 8px;
-  border-radius: 8px;
-  overflow: hidden;
+    padding: 16px 8px;
+    border-radius: 8px;
+    overflow: hidden;
 }

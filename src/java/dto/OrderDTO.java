@@ -17,7 +17,7 @@ public class OrderDTO {
 
     private int Id;
     private ClientDTO Client;
-    private int AddressId;
+    private AddressDTO Address;
     private int StatusId;
     private Voucher Voucher;
     private int OrderTypeId;
@@ -29,11 +29,22 @@ public class OrderDTO {
     public OrderDTO() {
     }
 
-    @Override
-    public String toString() {
-        return "OrderDTO{" + "Id=" + Id + ", Client=" + Client + ", AddressId=" + AddressId + ", StatusId=" + StatusId + ", Voucher=" + Voucher + ", OrderTypeId=" + OrderTypeId + ", PaymentMethod=" + PaymentMethod + ", Distributor=" + Distributor + ", CreatedAt=" + CreatedAt + ", UpdatedAt=" + UpdatedAt + '}';
+    public OrderDTO(int Id, ClientDTO Client, AddressDTO Address, Voucher Voucher, PaymentMethod PaymentMethod, UserDTO Distributor, Date CreatedAt, Date UpdatedAt) {
+        this.Id = Id;
+        this.Client = Client;
+        this.Address = Address;
+        this.Voucher = Voucher;
+        this.PaymentMethod = PaymentMethod;
+        this.Distributor = Distributor;
+        this.CreatedAt = CreatedAt;
+        this.UpdatedAt = UpdatedAt;
     }
 
+    @Override
+    public String toString() {
+        return "OrderDTO{" + "Id=" + Id + ", Client=" + Client + ", Address=" + Address + ", StatusId=" + StatusId + ", Voucher=" + Voucher + ", OrderTypeId=" + OrderTypeId + ", PaymentMethod=" + PaymentMethod + ", Distributor=" + Distributor + ", CreatedAt=" + CreatedAt + ", UpdatedAt=" + UpdatedAt + '}';
+    }
+    
     
 
     public int getId() {
@@ -52,12 +63,36 @@ public class OrderDTO {
         this.Client = Client;
     }
 
-    public int getAddressId() {
-        return AddressId;
+    public AddressDTO getAddress() {
+        return Address;
     }
 
-    public void setAddressId(int AddressId) {
-        this.AddressId = AddressId;
+    public void setAddress(AddressDTO Address) {
+        this.Address = Address;
+    }
+
+    public int getOrderTypeId() {
+        return OrderTypeId;
+    }
+
+    public void setOrderTypeId(int OrderTypeId) {
+        this.OrderTypeId = OrderTypeId;
+    }
+
+    public Date getCreatedAt() {
+        return CreatedAt;
+    }
+
+    public void setCreatedAt(Date CreatedAt) {
+        this.CreatedAt = CreatedAt;
+    }
+
+    public Date getUpdatedAt() {
+        return UpdatedAt;
+    }
+
+    public void setUpdatedAt(Date UpdatedAt) {
+        this.UpdatedAt = UpdatedAt;
     }
 
     public Voucher getVoucher() {
@@ -91,6 +126,5 @@ public class OrderDTO {
     public void setDistributor(UserDTO Distributor) {
         this.Distributor = Distributor;
     }
-    
 
 }

@@ -5,8 +5,10 @@
  */
 package test;
 
+import dto.OrderDTO;
 import dto.UserDTO;
 import java.util.List;
+import model.order.OrderDAOImpl;
 import model.orderDetail.OrderDetail;
 import model.orderDetail.OrderDetailDAOImpl;
 import model.role.Role;
@@ -31,6 +33,14 @@ public class Test {
 
         System.out.println("User: " + user.toString());
 
+        OrderDAOImpl orderDAO = new OrderDAOImpl();
+        int[] ids = {1,2,3};
+        List<OrderDTO> orders = orderDAO.getAll(ids);
+
+        for (OrderDTO order : orders) {
+            System.out.println("Order: " + order.toString());
+        }
+        
         OrderDetailDAOImpl orderDetailDAO = new OrderDetailDAOImpl();
         List<OrderDetail> orderDetails = orderDetailDAO.get(1);
 

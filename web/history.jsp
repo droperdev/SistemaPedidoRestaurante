@@ -72,7 +72,7 @@
         <div class="content">
             <% int[] ids = {4, 5};%>
             <% List<OrderDTO> orders = new OrderDAOImpl().getAll(ids); %>
-            <div class="table-responsive">
+            <div class="card table-responsive">
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -92,7 +92,10 @@
                         <tr>
                             <td><%=order.getId()%></td>
                             <td><%=order.getClient().getName() + " " + order.getClient().getLastName()%></td>
-                            <td><%=order.getAddressId()%></td>
+                            <td>
+                                <%=order.getAddress().getAddress()%> <br>
+                                <%=order.getAddress().getReferences()%>
+                            </td>
                             <td><%=order.getPaymentMethod().getName()%></td>
                             <td><%=order.getVoucher().getName()%></td>
                             <td><%=order.getDistributor().getName() + " " + order.getDistributor().getLastName()%></td>
