@@ -10,3 +10,9 @@ openDetail = (orderId) => {
     $("#MyModalLabel").text("Detalle de pedido N°" + orderId);
     $("#content-modal").load("detail.jsp", {orderId});
 };
+
+openMap = (orderId) => {
+    $("#MyModal").modal('show');
+    $("#MyModalLabel").text("Detalle de pedido N°" + orderId);
+    $("#content-modal").load("map.jsp", {orderId});
+}

@@ -154,6 +154,7 @@ public class OrderDAOImpl implements OrderDAO {
         con = cn.getConnection();
         try {
             ps = con.prepareStatement(query);
+            ps.setInt(1, orderId);
             rs = ps.executeQuery();
             while (rs.next()) {
                 order = new OrderDTO();
@@ -205,7 +206,6 @@ public class OrderDAOImpl implements OrderDAO {
                                 rs.getString("DistribuitorLastName")
                         )
                 );
-                order.setTotal(rs.getDouble("Total"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(OrderDAOImpl.class.getName()).log(Level.SEVERE, null, ex);

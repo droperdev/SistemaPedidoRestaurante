@@ -48,5 +48,9 @@ public class Test {
             System.out.println("OrderDetail: " + orderDetail.toString());
         }
 
+        OrderDTO order = new OrderDAOImpl().get(1);
+
+        System.out.println("Order: " + order.toString());
+
     }
 }

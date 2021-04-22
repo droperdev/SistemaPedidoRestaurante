@@ -21,10 +21,10 @@
         <title>Sistema Restaurant</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet"  href="css/main.css" >
         <link rel="stylesheet"  href="css/menu.css" >
         <link rel="stylesheet"  href="css/header.css" >
         <link rel="stylesheet"  href="css/common.css" >
+        <link rel="stylesheet"  href="css/main.css" >
     </head>
     <body>
         <div class="sidebar">
@@ -104,7 +104,7 @@
                             <td><%=order.getVoucher().getName()%></td>
                             <td><%=order.getOrderType().getName()%></td>
                             <td class="font-weight-bold"><%=order.getDistributor().getName() + " " + order.getDistributor().getLastName()%></td>
-                            <td class="font-weight-bold text-success">S/ <%=String.format("%.2f", order.getTotal())%></td>
+                            <td class="font-weight-bold text-success">S/&nbsp;<%=String.format("%.2f", order.getTotal())%></td>
                             <td class="text-center"><span class="<%=order.getStatus().getClassName()%>"><%=order.getStatus().getName()%></span></td>
                             <td class="text-center">
                                 <div class="dropdown">
@@ -112,7 +112,7 @@
                                     </a>
 
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <button class="dropdown-item" ><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;Ver pedido</button>
+                                        <button class="dropdown-item" onclick="openDetail('<%=order.getId()%>');" ><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;Ver pedido</button>
                                         <button class="dropdown-item" ><i class="fa fa-map"></i>&nbsp;&nbsp;&nbsp;Ver mapa</button>
                                     </div>
                                 </div>
@@ -122,8 +122,23 @@
                     </tbody>
                 </table>
             </div>
+            <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="MyModalLabel" >
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="MyModalLabel"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="content-modal">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"crossorigin="anonymous"></script>
         <script src="scripts/main.js"></script>
     </body>

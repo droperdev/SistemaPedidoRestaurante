@@ -4,21 +4,18 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 18/04/2021, 07:08:14 PM
+    Created on : 22/04/2021, 09:49:46 AM
     Author     : droperdev
 */
 
-
-
-.table-responsive {
-    padding:16px;
+html,
+body {
     height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-.total {
-    position: absolute;
-    right: 0;
-    bottom:0;
-    padding: 24px;
-    font-weight: bold;
+#map {
+    width: 100%;
+    height: 400px;
 }

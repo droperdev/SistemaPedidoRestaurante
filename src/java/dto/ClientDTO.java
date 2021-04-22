@@ -21,6 +21,11 @@ public class ClientDTO {
         this.lastName = lastName;
     }
 
+    @Override
+    public String toString() {
+        return "ClientDTO{" + "id=" + id + ", name=" + name + ", lastName=" + lastName + '}';
+    }
+
     public int getId() {
         return id;
     }
@@ -43,6 +48,10 @@ public class ClientDTO {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getFullName() {
+        return this.name + " " + this.lastName;
     }
 
 }
