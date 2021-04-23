@@ -113,7 +113,7 @@
 
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <button class="dropdown-item" onclick="openDetail('<%=order.getId()%>');" ><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;Ver pedido</button>
-                                        <button class="dropdown-item" ><i class="fa fa-map"></i>&nbsp;&nbsp;&nbsp;Ver mapa</button>
+                                        <button class="dropdown-item" onclick="openMap('<%=order.getId()%>');" ><i class="fa fa-map"></i>&nbsp;&nbsp;&nbsp;Ver mapa</button>
                                     </div>
                                 </div>
                             </td>

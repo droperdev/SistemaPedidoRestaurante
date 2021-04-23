@@ -36,7 +36,8 @@
                 </div>
                 <input class="btn btn-primary btn-block" type="submit" value="Iniciar sesion">
                 <% if (message != null) {%>
-                <label class="txt-danger"> ${message} </label>
+                <br>
+                <label class="text-danger"> ${message} </label>
                 <% }%>           
             </form>
         </div>

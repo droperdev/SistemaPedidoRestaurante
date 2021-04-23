@@ -87,7 +87,6 @@
                             <th>Total</th>
                             <th class="text-center">Estado</th>
                             <th></th>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -111,7 +110,6 @@
                                 <div class="dropdown">
                                     <a class="btn fa fa-ellipsis-v" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     </a>
-
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <button class="dropdown-item" ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Asignar pedido</button>
                                         <button class="dropdown-item" onclick="openDetail('<%=order.getId()%>');"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;Ver pedido</button>
