@@ -178,3 +178,60 @@ li a {
     color: white;
     cursor: pointer;
 }
+
+
+@media (max-width: 1500px) {
+    .sidebar-user {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar-user .info .user {
+        display: none;
+    }
+
+    .sidebar-user .info .role {
+        display: none;
+    }   
+
+
+    .sidebar-menu .nav-item {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sidebar-menu .nav-item .nav-link {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        font-size: 12px;
+        padding: 0;
+
+    }
+
+    .sidebar-menu .nav-item .nav-link .icon{
+        width: 24px;
+        height: 24px;
+        margin-right: 0;
+    }
+
+    .sidebar-menu .nav-item .nav-link  span{
+        text-align: center;
+    }
+
+    .sidebar-menu .nav-item .nav-link  i {
+        margin-right: 0;
+    }
+
+    .sidebar-menu .nav-item i {
+        color: rgba(255, 255, 255, 0.8);
+        margin-right: 0;
+    }
+
+    .sidebar-menu li a {
+        font-size: 12px;
+    }
+
+}

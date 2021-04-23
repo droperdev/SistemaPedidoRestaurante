@@ -103,7 +103,11 @@
                             <td><%=order.getPaymentMethod().getName()%></td>
                             <td><%=order.getVoucher().getName()%></td>
                             <td><%=order.getOrderType().getName()%></td>
+                            <% if (order.getDistributor().getName() != null) {%>
                             <td class="font-weight-bold"><%=order.getDistributor().getName() + " " + order.getDistributor().getLastName()%></td>
+                            <% } else {%>
+                            <td class="font-weight-bold">-</td>
+                            <%}%>
                             <td class="font-weight-bold text-success">S/&nbsp;<%=String.format("%.2f", order.getTotal())%></td>
                             <td class="text-center"><span class="<%=order.getStatus().getClassName()%>"><%=order.getStatus().getName()%></span></td>
                             <td class="text-center">
