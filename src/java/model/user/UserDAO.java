@@ -6,6 +6,7 @@
 package model.user;
 
 import dto.UserDTO;
+import java.util.List;
 
 /**
  *
@@ -14,4 +15,5 @@ import dto.UserDTO;
 public interface UserDAO {
 
     public UserDTO validateCredentials(String userName, String password);
+    public List<UserDTO> getDistributors(int roleId);
 }

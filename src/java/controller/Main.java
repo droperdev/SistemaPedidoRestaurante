@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.order.OrderDAOImpl;
 
 /**
  *
@@ -41,6 +42,16 @@ public class Main extends HttpServlet {
                 
             case "history":
                 response.sendRedirect("history.jsp");
+                break;
+                
+            case "assign":
+                
+                int orderId = Integer.parseInt(request.getParameter("orderId"));
+                int distributorId = Integer.parseInt(request.getParameter("distributorId"));
+                
+                boolean wasAssigned = new OrderDAOImpl().assignDistributor(orderId, distributorId);
+                
+                response.sendRedirect("orders.jsp");
                 break;
                 
             case "logout":

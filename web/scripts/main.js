@@ -7,12 +7,18 @@
 openDetail = (orderId) => {
     console.log(orderId);
     $("#MyModal").modal('show');
-    $("#MyModalLabel").text("Detalle de pedido N°" + orderId);
+    $("#MyModalLabel").text("Detalle de pedido N° " + orderId);
     $("#content-modal").load("detail.jsp", {orderId});
 };
 
 openMap = (orderId) => {
     $("#MyModal").modal('show');
-    $("#MyModalLabel").text("Detalle de pedido N°" + orderId);
+    $("#MyModalLabel").text("Detalle de pedido N° " + orderId);
     $("#content-modal").load("map.jsp", {orderId});
 }
+
+openAssignOrder = (orderId) => {
+    $("#MyModal").modal('show');
+    $("#MyModalLabel").text("Asignar distribuidor al pedido N° " + orderId);
+    $("#content-modal").load("assign.jsp", {orderId});
+} 

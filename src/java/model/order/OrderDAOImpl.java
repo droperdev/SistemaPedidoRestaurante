@@ -56,7 +56,7 @@ public class OrderDAOImpl implements OrderDAO {
                 + "INNER JOIN Voucher v ON o.VoucherId  = v.Id "
                 + "INNER JOIN OrderType ot ON o.OrderTypeId = ot.Id "
                 + "INNER JOIN PaymentMethod pm ON o.PaymentMethodId = pm.Id "
-                + "INNER JOIN User u ON o.DistribuitorId = u.Id ";
+                + "LEFT JOIN User u ON o.DistribuitorId = u.Id ";
 
         String concat = "";
         for (int id : ids) {
@@ -148,7 +148,7 @@ public class OrderDAOImpl implements OrderDAO {
                 + "INNER JOIN Voucher v ON o.VoucherId  = v.Id "
                 + "INNER JOIN OrderType ot ON o.OrderTypeId = ot.Id "
                 + "INNER JOIN PaymentMethod pm ON o.PaymentMethodId = pm.Id "
-                + "INNER JOIN User u ON o.DistribuitorId = u.Id "
+                + "LEFT JOIN User u ON o.DistribuitorId = u.Id "
                 + "WHERE o.Id = ?";
 
         con = cn.getConnection();
@@ -211,6 +211,27 @@ public class OrderDAOImpl implements OrderDAO {
             Logger.getLogger(OrderDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return order;
+    }
+
+    @Override
+    public boolean assignDistributor(int orderId, int distributorId) {
+        boolean wasAssigned = false;
+        con = cn.getConnection();
+        try {
+
+            String query
+                    = "UPDATE `Order` o SET o.DistribuitorId =? "
+                    + "WHERE o.Id = ?";
+
+            ps = con.prepareStatement(query);
+            ps.setInt(1, distributorId);
+            ps.setInt(2, orderId);
+            wasAssigned = ps.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return wasAssigned;
     }
 
 }

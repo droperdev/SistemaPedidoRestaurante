@@ -21,10 +21,10 @@
         <title>Sistema Restaurant</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet"  href="css/menu.css" >
-        <link rel="stylesheet"  href="css/header.css" >
-        <link rel="stylesheet"  href="css/common.css" >
-        <link rel="stylesheet"  href="css/main.css" >
+        <link rel="stylesheet" href="css/menu.css" >
+        <link rel="stylesheet" href="css/header.css" >
+        <link rel="stylesheet" href="css/common.css" >
+        <link rel="stylesheet" href="css/main.css" >
     </head>
     <body>
         <div class="sidebar">
@@ -103,7 +103,11 @@
                             <td><%=order.getPaymentMethod().getName()%></td>
                             <td><%=order.getVoucher().getName()%></td>
                             <td><%=order.getOrderType().getName()%></td>
+                            <% if (order.getDistributor().getName() != null) {%>
                             <td class="font-weight-bold"><%=order.getDistributor().getName() + " " + order.getDistributor().getLastName()%></td>
+                            <% } else {%>
+                            <td class="font-weight-bold">-</td>
+                            <%}%>
                             <td class="font-weight-bold text-success">S/&nbsp;<%=String.format("%.2f", order.getTotal())%></td>
                             <td class="text-center"><span class="<%=order.getStatus().getClassName()%>"><%=order.getStatus().getName()%></span></td>
                             <td class="text-center">
@@ -111,7 +115,7 @@
                                     <a class="btn fa fa-ellipsis-v" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <button class="dropdown-item" ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Asignar pedido</button>
+                                        <button class="dropdown-item" onclick="openAssignOrder('<%=order.getId()%>');" ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Asignar pedido</button>
                                         <button class="dropdown-item" onclick="openDetail('<%=order.getId()%>');"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;Ver pedido</button>
                                         <button class="dropdown-item" onclick="openMap('<%=order.getId()%>');" ><i class="fa fa-map"></i>&nbsp;&nbsp;&nbsp;Ver mapa</button>
                                         <button class="dropdown-item" ><i class="fa fa-spinner"></i>&nbsp;&nbsp;&nbsp;Cambiar de estado</button>

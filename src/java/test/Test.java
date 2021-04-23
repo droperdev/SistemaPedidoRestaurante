@@ -51,6 +51,15 @@ public class Test {
         OrderDTO order = new OrderDAOImpl().get(1);
 
         System.out.println("Order: " + order.toString());
+        
+        boolean result = new OrderDAOImpl().assignDistributor(1, 5);
+         System.out.println("result: " + result);
+        
+        
+        List<UserDTO> users = userDAO.getDistributors(2);
+         for (UserDTO userX : users) {
+            System.out.println("users: " + userX.toString());
+        }
 
     }
 }
