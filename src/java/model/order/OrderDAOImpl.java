@@ -214,24 +214,50 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public boolean assignDistributor(int orderId, int distributorId) {
-        boolean wasAssigned = false;
+    public void assignDistributor(int orderId, int distributorId) {
+        String query
+                = "UPDATE `Order` o SET o.DistribuitorId =? "
+                + "WHERE o.Id = ?";
         con = cn.getConnection();
         try {
-
-            String query
-                    = "UPDATE `Order` o SET o.DistribuitorId =? "
-                    + "WHERE o.Id = ?";
-
             ps = con.prepareStatement(query);
             ps.setInt(1, distributorId);
             ps.setInt(2, orderId);
-            wasAssigned = ps.executeUpdate() > 0;
+            ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(OrderDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return wasAssigned;
+    }
+
+    @Override
+    public void changeStatus(int orderId) {
+        String query
+                = "UPDATE `Order` o SET o.StatusId =o.StatusId + 1 "
+                + "WHERE o.Id = ?";
+        con = cn.getConnection();
+        try {
+            ps = con.prepareStatement(query);
+            ps.setInt(1, orderId);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void cancelOrder(int orderId) {
+        String query
+                = "UPDATE `Order` o SET o.StatusId = 5 "
+                + "WHERE o.Id = ?";
+        con = cn.getConnection();
+        try {
+            ps = con.prepareStatement(query);
+            ps.setInt(1, orderId);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

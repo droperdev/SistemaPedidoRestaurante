@@ -15,5 +15,7 @@ import java.util.List;
 public interface OrderDAO {
     public OrderDTO get(int orderId);
     public List<OrderDTO> getAll(int[] ints);
-    public boolean assignDistributor(int orderId, int distributorId);
+    public void assignDistributor(int orderId, int distributorId);
+    public void changeStatus(int orderId);
+    public void cancelOrder(int orderId);
 }

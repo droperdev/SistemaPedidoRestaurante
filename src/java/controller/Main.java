@@ -36,24 +36,32 @@ public class Main extends HttpServlet {
         String action = request.getParameter("action");
 
         switch (action) {
-            case "orders": 
+            case "orders":
                 response.sendRedirect("orders.jsp");
                 break;
-                
+
             case "history":
                 response.sendRedirect("history.jsp");
                 break;
-                
+
             case "assign":
-                
                 int orderId = Integer.parseInt(request.getParameter("orderId"));
                 int distributorId = Integer.parseInt(request.getParameter("distributorId"));
-                
-                boolean wasAssigned = new OrderDAOImpl().assignDistributor(orderId, distributorId);
-                
+                new OrderDAOImpl().assignDistributor(orderId, distributorId);
+                new OrderDAOImpl().changeStatus(orderId);
                 response.sendRedirect("orders.jsp");
                 break;
-                
+            case "status":
+                orderId = Integer.parseInt(request.getParameter("orderId"));
+                new OrderDAOImpl().changeStatus(orderId);
+                response.sendRedirect("orders.jsp");
+                break;
+
+            case "cancel":
+                orderId = Integer.parseInt(request.getParameter("orderId"));
+                new OrderDAOImpl().cancelOrder(orderId);
+                response.sendRedirect("orders.jsp");
+                break;
             case "logout":
                 HttpSession session = request.getSession();
                 session.removeAttribute("user");

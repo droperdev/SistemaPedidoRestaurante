@@ -7,18 +7,35 @@
 openDetail = (orderId) => {
     console.log(orderId);
     $("#MyModal").modal('show');
+    $(".modal-dialog").removeClass("modal-lg").addClass("modal-lg");
     $("#MyModalLabel").text("Detalle de pedido N° " + orderId);
     $("#content-modal").load("detail.jsp", {orderId});
 };
 
 openMap = (orderId) => {
     $("#MyModal").modal('show');
+    $(".modal-dialog").removeClass("modal-lg").addClass("modal-lg");
     $("#MyModalLabel").text("Detalle de pedido N° " + orderId);
     $("#content-modal").load("map.jsp", {orderId});
 }
 
 openAssignOrder = (orderId) => {
     $("#MyModal").modal('show');
+    $(".modal-dialog").removeClass("modal-lg").addClass("modal-md");
     $("#MyModalLabel").text("Asignar distribuidor al pedido N° " + orderId);
     $("#content-modal").load("assign.jsp", {orderId});
-} 
+}
+
+openChangeStatus = (orderId) => {
+    $("#MyModal").modal('show');
+    $(".modal-dialog").removeClass("modal-lg modal-md").addClass("modal-md");
+    $("#MyModalLabel").text("Cambio de estado del pedido N° " + orderId);
+    $("#content-modal").load("status.jsp", {orderId});
+}
+
+openCancelOrder = (orderId) => {
+    $("#MyModal").modal('show');
+    $(".modal-dialog").removeClass("modal-lg modal-md").addClass("modal-md");
+    $("#MyModalLabel").text("Anular pedido N° " + orderId);
+    $("#content-modal").load("cancel.jsp", {orderId});
+}

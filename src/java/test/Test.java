@@ -52,9 +52,7 @@ public class Test {
 
         System.out.println("Order: " + order.toString());
         
-        boolean result = new OrderDAOImpl().assignDistributor(1, 5);
-         System.out.println("result: " + result);
-        
+        new OrderDAOImpl().assignDistributor(1, 5);
         
         List<UserDTO> users = userDAO.getDistributors(2);
          for (UserDTO userX : users) {

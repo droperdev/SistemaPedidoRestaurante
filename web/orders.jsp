@@ -115,10 +115,15 @@
                                     <a class="btn fa fa-ellipsis-v" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <%if (order.getStatus().getId() == 2) {%>
                                         <button class="dropdown-item" onclick="openAssignOrder('<%=order.getId()%>');" ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Asignar pedido</button>
+                                        <%}%>
                                         <button class="dropdown-item" onclick="openDetail('<%=order.getId()%>');"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;Ver pedido</button>
                                         <button class="dropdown-item" onclick="openMap('<%=order.getId()%>');" ><i class="fa fa-map"></i>&nbsp;&nbsp;&nbsp;Ver mapa</button>
-                                        <button class="dropdown-item" ><i class="fa fa-spinner"></i>&nbsp;&nbsp;&nbsp;Cambiar de estado</button>
+                                        <%if (order.getStatus().getId() != 2) {%>
+                                        <button class="dropdown-item" onclick="openChangeStatus('<%=order.getId()%>');" ><i class="fa fa-spinner"></i>&nbsp;&nbsp;&nbsp;Cambiar de estado</button>
+                                        <%}%>
+                                        <button class="dropdown-item" onclick="openCancelOrder('<%=order.getId()%>');" ><i class="fa fa-spinner"></i>&nbsp;&nbsp;&nbsp;Anular pedido</button>
                                     </div>
                                 </div>
                             </td>
@@ -128,7 +133,7 @@
                 </table>
             </div>
             <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="MyModalLabel" >
-                <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="MyModalLabel"></h5>
