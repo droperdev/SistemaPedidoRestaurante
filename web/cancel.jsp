@@ -16,7 +16,7 @@
             <h5>¿Realmente desea anular el pedido?</h5>
             <br>
             <form method="POST" action="Main?action=cancel&orderId=<%=orderId%>">
-                <input type="submit" class="btn btn-primary" value="Aceptar">
+                <input type="submit" class="btn btn-primary btn-block" value="Aceptar">
             </form>
         </div>
     </body>
