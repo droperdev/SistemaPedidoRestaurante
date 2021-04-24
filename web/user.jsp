@@ -3,6 +3,7 @@
     Created on : 17/04/2021, 04:33:53 AM
     Author     : droperdev
 --%>
+<%@page import="model.user.UserDAOImpl"%>
 <%@page import="dto.UserDTO"%>
 <%@page import="dto.OrderDTO"%>
 <%@page import="java.util.List"%>
@@ -21,10 +22,10 @@
         <title>Sistema Restaurant</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/menu.css" >
-        <link rel="stylesheet" href="css/header.css" >
-        <link rel="stylesheet" href="css/common.css" >
-        <link rel="stylesheet" href="css/main.css" >
+        <link rel="stylesheet"  href="css/menu.css" >
+        <link rel="stylesheet"  href="css/header.css" >
+        <link rel="stylesheet"  href="css/common.css" >
+        <link rel="stylesheet"  href="css/main.css" >
     </head>
     <body>
         <div class="sidebar">
@@ -42,13 +43,13 @@
                 </div>
                 <hr>
                 <ul class="sidebar-menu">
-                    <li class="nav-item">
+                    <li class="nav-item show">
                         <a class="nav-link" href="Main?action=users">
                             <img class="icon" src="assets/order.svg">
                             <span clasS="text-wrap">Usuarios</span>
                         </a>
                     </li>
-                    <li class="nav-item show">
+                    <li class="nav-item ">
                         <a class="nav-link" href="Main?action=orders">
                             <img class="icon" src="assets/order.svg">
                             <span clasS="text-wrap">Pedidos</span>
@@ -71,64 +72,47 @@
         </div>
         <div class="header">
             <div class="content-header">
-                <span class="title">Pedidos</span>
+                <span class="title">Usuarios</span>
+                <button type="button" class="btn btn-primary" onclick="openUser();">
+                    Crear Usuario</button>
             </div>
+
         </div>
 
         <div class="content">
             <% int[] ids = {1, 2, 3}; %>
-            <% List<OrderDTO> orders = new OrderDAOImpl().getAll(ids); %>
+            <% List<UserDTO> users = new UserDAOImpl().getAll(); %>
             <div class="card table-responsive">
                 <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Cliente</th>
-                            <th>Dirección</th>
-                            <th>Método de Pago</th>
-                            <th>Voucher</th>
-                            <th>Tipo de pedido </th>
-                            <th>Distribuidor</th>
-                            <th>Total</th>
-                            <th class="text-center">Estado</th>
+
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>Usuario</th>
+                            <th>Rol </th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <%! OrderDTO order;%>
-                        <% for (int i = 0; i < orders.size(); i++) { %>
-                        <% order = orders.get(i);%>
+                        <%! UserDTO user;%>
+                        <% for (int i = 0; i < users.size(); i++) { %>
+                        <% user = new UserDTO();
+                            user = users.get(i);%>
                         <tr>
-                            <td><%=order.getId()%></td>
-                            <td><%=order.getClient().getName() + " " + order.getClient().getLastName()%></td>
-                            <td>
-                                <%=order.getAddress().getAddress()%> <br>
-                                <%=order.getAddress().getReference()%>
-                            </td>
-                            <td><%=order.getPaymentMethod().getName()%></td>
-                            <td><%=order.getVoucher().getName()%></td>
-                            <td><%=order.getOrderType().getName()%></td>
-                            <% if (order.getDistributor().getName() != null) {%>
-                            <td class="font-weight-bold"><%=order.getDistributor().getName() + " " + order.getDistributor().getLastName()%></td>
-                            <% } else {%>
-                            <td class="font-weight-bold">-</td>
-                            <%}%>
-                            <td class="font-weight-bold text-success">S/&nbsp;<%=String.format("%.2f", order.getTotal())%></td>
-                            <td class="text-center"><span class="<%=order.getStatus().getClassName()%>"><%=order.getStatus().getName()%></span></td>
+                            <td><%=user.getId()%></td>
+
+                            <td><%=user.getName()%></td>
+                            <td> <%=user.getLastName()%></td>
+                            <td><%=user.getUserName()%></td>
+                            <td><strong><%=user.getRole().getName()%></strong></td>
                             <td class="text-center">
                                 <div class="dropdown">
                                     <a class="btn fa fa-ellipsis-v" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <%if (order.getStatus().getId() == 2) {%>
-                                        <button class="dropdown-item" onclick="openAssignOrder('<%=order.getId()%>');" ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Asignar pedido</button>
-                                        <%}%>
-                                        <button class="dropdown-item" onclick="openDetail('<%=order.getId()%>');"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;Ver pedido</button>
-                                        <button class="dropdown-item" onclick="openMap('<%=order.getId()%>');" ><i class="fa fa-map"></i>&nbsp;&nbsp;&nbsp;Ver mapa</button>
-                                        <%if (order.getStatus().getId() != 2) {%>
-                                        <button class="dropdown-item" onclick="openChangeStatus('<%=order.getId()%>');" ><i class="fa fa-spinner"></i>&nbsp;&nbsp;&nbsp;Cambiar de estado</button>
-                                        <%}%>
-                                        <button class="dropdown-item" onclick="openCancelOrder('<%=order.getId()%>');" ><i class="fa fa-spinner"></i>&nbsp;&nbsp;&nbsp;Anular pedido</button>
+                                        <button class="dropdown-item" onclick="openDeleteUser('<%=user.getId()%>');"><i class="fa fa-trash-o"></i>&nbsp;&nbsp;&nbsp;Eliminar</button>
                                     </div>
                                 </div>
                             </td>
@@ -137,11 +121,11 @@
                     </tbody>
                 </table>
             </div>
-            <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="MyModalLabel" >
-                <div class="modal-dialog" role="document">
+            <div class="modal fade" id="MyModal2" tabindex="-1" role="dialog" aria-labelledby="MyModalLabel2" >
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="MyModalLabel"></h5>
+                            <h5 class="modal-title" id="MyModalLabel2"></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>

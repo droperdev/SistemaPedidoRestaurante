@@ -5,6 +5,7 @@
  */
 package controller;
 
+import dto.UserDTO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.order.OrderDAOImpl;
+import model.user.UserDAOImpl;
 
 /**
  *
@@ -36,19 +38,21 @@ public class Main extends HttpServlet {
         String action = request.getParameter("action");
 
         switch (action) {
+            case "users":
+                response.sendRedirect("user.jsp");
+                break;
             case "orders":
                 response.sendRedirect("orders.jsp");
                 break;
-
             case "history":
                 response.sendRedirect("history.jsp");
                 break;
-
             case "assign":
                 int orderId = Integer.parseInt(request.getParameter("orderId"));
                 int distributorId = Integer.parseInt(request.getParameter("distributorId"));
-                new OrderDAOImpl().assignDistributor(orderId, distributorId);
-                new OrderDAOImpl().changeStatus(orderId);
+                OrderDAOImpl orderDAO = new OrderDAOImpl();
+                orderDAO.assignDistributor(orderId, distributorId);
+                orderDAO.changeStatus(orderId);
                 response.sendRedirect("orders.jsp");
                 break;
             case "status":
@@ -56,17 +60,37 @@ public class Main extends HttpServlet {
                 new OrderDAOImpl().changeStatus(orderId);
                 response.sendRedirect("orders.jsp");
                 break;
-
             case "cancel":
                 orderId = Integer.parseInt(request.getParameter("orderId"));
                 new OrderDAOImpl().cancelOrder(orderId);
                 response.sendRedirect("orders.jsp");
+                break;
+            case "registerUser":
+                UserDAOImpl userDAO = new UserDAOImpl();
+                UserDTO user = null;
+                String nombre = request.getParameter("nombre");
+                String apellido = request.getParameter("apellido");
+                String usuario = request.getParameter("usuario");
+                String password = request.getParameter("password");
+                user = new UserDTO();
+                user.setName(nombre);
+                user.setLastName(apellido);
+                user.setUserName(usuario);
+                user.setPassword(password);
+                userDAO.save(user);
+                response.sendRedirect("user.jsp");
+                break;
+            case "userDelete":
+                int userId = Integer.parseInt(request.getParameter("userId"));
+                new UserDAOImpl().delete(userId);
+                response.sendRedirect("user.jsp");
                 break;
             case "logout":
                 HttpSession session = request.getSession();
                 session.removeAttribute("user");
                 response.sendRedirect("index.jsp");
                 break;
+
         }
     }
 

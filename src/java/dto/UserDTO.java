@@ -17,9 +17,21 @@ public class UserDTO {
     private Role role;
     private String name;
     private String lastName;
+     private String userName;
+     private String password;
 
     public UserDTO() {
     }
+
+    public UserDTO(int id, String name, String lastName, String userName, String password) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.password = password;
+    }
+    
+    
 
     public UserDTO(int id, Role role, String name, String lastName) {
         this.id = id;
@@ -70,6 +82,24 @@ public class UserDTO {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    
 
     public String getFullName() {
         return this.name + " " + this.lastName;

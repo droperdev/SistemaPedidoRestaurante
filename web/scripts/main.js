@@ -39,3 +39,17 @@ openCancelOrder = (orderId) => {
     $("#MyModalLabel").text("Anular pedido N° " + orderId);
     $("#content-modal").load("cancel.jsp", {orderId});
 }
+
+openUser = () => {
+    $("#MyModal2").modal('show');
+    $(".modal-dialog").removeClass("modal-lg modal-md").addClass("modal-md");
+    $("#MyModalLabel2").text("Registrar usuario");
+    $("#content-modal").load("userAdd.jsp");
+};
+
+openDeleteUser = (userId) => {
+    $("#MyModal2").modal('show');
+    $(".modal-dialog").removeClass("modal-lg modal-md").addClass("modal-md");
+    $("#MyModalLabel2").text("Eliminar Usuario N° " + userId);
+    $("#content-modal").load("userDelete.jsp", {userId});
+};

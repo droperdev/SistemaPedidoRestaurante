@@ -43,6 +43,12 @@
                 <hr>
                 <ul class="sidebar-menu">
                     <li class="nav-item">
+                        <a class="nav-link" href="Main?action=users">
+                            <img class="icon" src="assets/order.svg">
+                            <span clasS="text-wrap">Usuarios</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="Main?action=orders">
                             <img class="icon" src="assets/order.svg">
                             <span clasS="text-wrap">Pedidos</span>
@@ -54,7 +60,6 @@
                             <span clasS="text-wrap">Historial de pedidos</span>
                         </a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="Main?action=logout">
                             <img class="icon" src="assets/logout.svg">
