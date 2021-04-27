@@ -46,7 +46,7 @@ public class Login extends HttpServlet {
             if (user != null) {
                 session = request.getSession();
                 session.setAttribute("user", user);
-                response.sendRedirect("orders.jsp");
+                response.sendRedirect("admin/orders.jsp");
                 //request.getRequestDispatcher("main.jsp").forward(request, response);
             } else {
                request.setAttribute("message", "Credenciales invalidas");

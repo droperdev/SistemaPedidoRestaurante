@@ -21,10 +21,10 @@
         <title>Sistema Restaurant</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/menu.css" >
-        <link rel="stylesheet" href="css/header.css" >
-        <link rel="stylesheet" href="css/common.css" >
-        <link rel="stylesheet" href="css/main.css" >
+        <link rel="stylesheet"  href="css/menu.css" >
+        <link rel="stylesheet"  href="css/header.css" >
+        <link rel="stylesheet"  href="css/common.css" >
+        <link rel="stylesheet"  href="css/main.css" >
     </head>
     <body>
         <div class="sidebar">
@@ -43,25 +43,25 @@
                 <hr>
                 <ul class="sidebar-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="Main?action=users">
+                        <a class="nav-link" href="../Main?action=users">
                             <img class="icon" src="assets/order.svg">
                             <span clasS="text-wrap">Usuarios</span>
                         </a>
                     </li>
-                    <li class="nav-item show">
-                        <a class="nav-link" href="Main?action=orders">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Main?action=orders">
                             <img class="icon" src="assets/order.svg">
                             <span clasS="text-wrap">Pedidos</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Main?action=history">
+                    <li class="nav-item show">
+                        <a class="nav-link">
                             <img class="icon" src="assets/order.svg">
                             <span clasS="text-wrap">Historial de pedidos</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Main?action=logout">
+                        <a class="nav-link" href="../Main?action=logout">
                             <img class="icon" src="assets/logout.svg">
                             <span clasS="text-wrap">Cerrar sesión</span>
                         </a>
@@ -71,12 +71,12 @@
         </div>
         <div class="header">
             <div class="content-header">
-                <span class="title">Pedidos</span>
+                <span class="title">Historial de pedidos</span>
             </div>
         </div>
 
         <div class="content">
-            <% int[] ids = {1, 2, 3}; %>
+            <% int[] ids = {4, 5};%>
             <% List<OrderDTO> orders = new OrderDAOImpl().getAll(ids); %>
             <div class="card table-responsive">
                 <table class="table table-hover">
@@ -84,10 +84,10 @@
                         <tr>
                             <th>Id</th>
                             <th>Cliente</th>
-                            <th>Dirección</th>
+                            <th>AddressId</th>
                             <th>Método de Pago</th>
                             <th>Voucher</th>
-                            <th>Tipo de pedido </th>
+                            <th>Tipo de pedido</th>
                             <th>Distribuidor</th>
                             <th>Total</th>
                             <th class="text-center">Estado</th>
@@ -119,16 +119,10 @@
                                 <div class="dropdown">
                                     <a class="btn fa fa-ellipsis-v" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     </a>
+
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <%if (order.getStatus().getId() == 2) {%>
-                                        <button class="dropdown-item" onclick="openAssignOrder('<%=order.getId()%>');" ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Asignar pedido</button>
-                                        <%}%>
-                                        <button class="dropdown-item" onclick="openDetail('<%=order.getId()%>');"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;Ver pedido</button>
+                                        <button class="dropdown-item" onclick="openDetail('<%=order.getId()%>');" ><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;Ver pedido</button>
                                         <button class="dropdown-item" onclick="openMap('<%=order.getId()%>');" ><i class="fa fa-map"></i>&nbsp;&nbsp;&nbsp;Ver mapa</button>
-                                        <%if (order.getStatus().getId() != 2) {%>
-                                        <button class="dropdown-item" onclick="openChangeStatus('<%=order.getId()%>');" ><i class="fa fa-spinner"></i>&nbsp;&nbsp;&nbsp;Cambiar de estado</button>
-                                        <%}%>
-                                        <button class="dropdown-item" onclick="openCancelOrder('<%=order.getId()%>');" ><i class="fa fa-spinner"></i>&nbsp;&nbsp;&nbsp;Anular pedido</button>
                                     </div>
                                 </div>
                             </td>
@@ -138,7 +132,7 @@
                 </table>
             </div>
             <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="MyModalLabel" >
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="MyModalLabel"></h5>
@@ -154,7 +148,7 @@
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"crossorigin="anonymous"></script>
         <script src="scripts/main.js"></script>
     </body>
 </html>

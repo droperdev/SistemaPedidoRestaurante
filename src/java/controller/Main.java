@@ -39,13 +39,13 @@ public class Main extends HttpServlet {
 
         switch (action) {
             case "users":
-                response.sendRedirect("user.jsp");
+                response.sendRedirect("admin/user.jsp");
                 break;
             case "orders":
-                response.sendRedirect("orders.jsp");
+                response.sendRedirect("admin/orders.jsp");
                 break;
             case "history":
-                response.sendRedirect("history.jsp");
+                response.sendRedirect("admin/history.jsp");
                 break;
             case "assign":
                 int orderId = Integer.parseInt(request.getParameter("orderId"));
@@ -53,17 +53,17 @@ public class Main extends HttpServlet {
                 OrderDAOImpl orderDAO = new OrderDAOImpl();
                 orderDAO.assignDistributor(orderId, distributorId);
                 orderDAO.changeStatus(orderId);
-                response.sendRedirect("orders.jsp");
+                response.sendRedirect("admin/orders.jsp");
                 break;
             case "status":
                 orderId = Integer.parseInt(request.getParameter("orderId"));
                 new OrderDAOImpl().changeStatus(orderId);
-                response.sendRedirect("orders.jsp");
+                response.sendRedirect("admin/orders.jsp");
                 break;
             case "cancel":
                 orderId = Integer.parseInt(request.getParameter("orderId"));
                 new OrderDAOImpl().cancelOrder(orderId);
-                response.sendRedirect("orders.jsp");
+                response.sendRedirect("admin/orders.jsp");
                 break;
             case "registerUser":
                 UserDAOImpl userDAO = new UserDAOImpl();
@@ -78,17 +78,17 @@ public class Main extends HttpServlet {
                 user.setUserName(usuario);
                 user.setPassword(password);
                 userDAO.save(user);
-                response.sendRedirect("user.jsp");
+                response.sendRedirect("admin/user.jsp");
                 break;
             case "userDelete":
                 int userId = Integer.parseInt(request.getParameter("userId"));
                 new UserDAOImpl().delete(userId);
-                response.sendRedirect("user.jsp");
+                response.sendRedirect("admin/user.jsp");
                 break;
             case "logout":
                 HttpSession session = request.getSession();
                 session.removeAttribute("user");
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("admin/index.jsp");
                 break;
 
         }

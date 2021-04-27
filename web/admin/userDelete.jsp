@@ -15,7 +15,7 @@
         <div class="container">
             <h5>¿Realmente desea eliminar al usuario?</h5>
             <br>
-            <form method="POST" action="Main?action=userDelete&userId=<%=userId%>">
+            <form method="POST" action="../Main?action=userDelete&userId=<%=userId%>">
                 <input type="submit" class="btn btn-primary btn-block" value="Aceptar">
             </form>
         </div>

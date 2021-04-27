@@ -15,7 +15,7 @@
         <div class="container">
             <h5>¿Realmente desea cambiar de estado?</h5>
             <br>
-            <form method="POST" action="Main?action=status&orderId=<%=orderId%>">
+            <form method="POST" action="../Main?action=status&orderId=<%=orderId%>">
                 <input type="submit" class="btn btn-primary btn-block" value="Aceptar">
             </form>
         </div>

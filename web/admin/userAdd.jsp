@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="container">
-            <form method="POST" action="Main?action=registerUser">
+            <form method="POST" action="../Main?action=registerUser">
                 <div >
                     <div class="form-group">
                         <label>Nombres</label>    

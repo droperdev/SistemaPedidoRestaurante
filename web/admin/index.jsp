@@ -25,7 +25,7 @@
         <div class="card content-login">
             <img src="./assets/logo.png" alt="">
             <hr>
-            <form method="POST" action="Login?action=login">
+            <form method="POST" action="../Login?action=login">
                 <div class="form-group">
                     <label for="userName">Usuario</label>
                     <input id="userName" class="form-control" type="text" name="userName"/>
