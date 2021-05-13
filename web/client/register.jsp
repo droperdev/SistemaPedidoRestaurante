@@ -1,6 +1,6 @@
 <%-- 
-    Document   : login
-    Created on : 26/04/2021, 09:32:22 PM
+    Document   : register
+    Created on : 13/05/2021, 02:52:47 AM
     Author     : droperdev
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Registrar</h1>
     </body>
 </html>

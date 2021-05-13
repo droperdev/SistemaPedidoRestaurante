@@ -5,10 +5,13 @@
  */
 package model.client;
 
+import dto.ClientDTO;
+
 /**
  *
  * @author Administrador
  */
 public interface ClientDAO {
      public Client getClient(int id);
+     public ClientDTO validateCredentials(String email, String password);
 }

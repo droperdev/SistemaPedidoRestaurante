@@ -14,11 +14,22 @@ public class ClientDTO {
     private int id;
     private String name;
     private String lastName;
+    private String email;
+
+    public ClientDTO() {
+    }
 
     public ClientDTO(int id, String name, String lastName) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
+    }
+
+    public ClientDTO(int id, String name, String lastName, String email) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
     }
 
     @Override
@@ -53,5 +64,15 @@ public class ClientDTO {
     public String getFullName() {
         return this.name + " " + this.lastName;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    
 
 }

@@ -6,6 +6,7 @@
 package model.client;
 
 import config.Conexion;
+import dto.ClientDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -45,6 +46,31 @@ public class ClientDAOImpl implements ClientDAO {
             }
         } catch (SQLException ex) {
             Logger.getLogger(ClientDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return client;
+    }
+
+     @Override
+    public ClientDTO validateCredentials(String email, String password) {
+       ClientDTO client = null;
+        String query
+                = "SELECT c.Id, c.Name, c.LastName, c.Email FROM Client c "
+                + "WHERE c.Email=? AND c.Password=?";
+        con = cn.getConnection();
+        try {
+            ps = con.prepareStatement(query);
+            ps.setString(1, email);
+            ps.setString(2, password);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                client = new ClientDTO();
+                client.setId(rs.getInt("Id"));
+                client.setName(rs.getString("Name"));
+                client.setLastName(rs.getString("LastName"));
+                client.setEmail(rs.getString("Email"));
+            }
+        } catch (SQLException ex) {
+            //Logger.getLogger(UserDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return client;
     }

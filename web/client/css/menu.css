@@ -1,0 +1,237 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18/04/2021, 07:14:07 PM
+    Author     : droperdev
+*/
+
+hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.5) !important;
+    margin: 1rem 1rem 0rem !important;
+}
+
+
+.sidebar {
+    position: fixed;
+    width: 280px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: width 0.5s;
+}
+
+.sidebar-inner {
+    background-color: black;
+    position: relative;
+    height: 100%;
+    border-right: 1px solid gray;
+
+}
+
+.sidebar-inner ul {
+    list-style-type: none;
+}
+
+.sidebar-user {
+    width: 100%;
+    padding: 8px;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.sidebar-user .image {
+    cursor: pointer;
+    width: 48px;
+    margin: 0px 8px;
+
+}
+
+.sidebar-user .image .image-circle {
+    width: 48px;
+    border-radius: 50%;
+}
+
+sidebar-user .info {
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+}
+
+.sidebar-menu {
+    height: calc(100vh - 65px);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
+.sidebar-menu .nav-item {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.sidebar-menu .show {
+    background-color: grey;
+}
+
+
+.sidebar-menu .nav-item i {
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+}
+&::before {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.4rem;
+    border-radius: 50px;
+}
+
+.sidebar-menu .nav-item .collapse {
+    background-color: white;
+    position: relative;
+    border-radius: 4px;
+    left: 10px;
+    z-index: 1;
+    top: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;    
+}
+
+.sidebar-menu .nav-item .collapse .collapse-inner .nav-link {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 16px 16px;
+    width: 14rem;
+    color: black;
+    cursor: pointer;
+
+}
+
+.sidebar-menu .nav-item .collapse .collapse-inner .nav-link  i {
+    color: black;
+    padding: 0.4rem;
+    border-radius: 50px;
+}
+
+.sidebar-menu .nav-item .collapse .collapse-inner .nav-link:hover {
+    color: #ff8326;
+}
+
+.sidebar-menu .nav-item .collapse:not(.show) {
+    display: none;
+}
+
+.sidebar-menu .nav-item .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    width: 14rem;
+    text-align: left;
+
+}
+
+.sidebar-menu .nav-item .nav-link .icon{
+    width: 24px;
+    height: 24px;
+    margin-right: 0.75rem;
+}
+.sidebar-menu .nav-item .nav-link  i {
+    color: rgba(255, 255, 255, 0.8);
+    margin-right: 0.75rem;
+}
+
+.sidebar-menu .nav-item .nav-link:hover{
+    color: white;
+}
+
+li {
+    padding: 8px 16px;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+
+}
+
+li a {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 15px;
+    position: relative;
+    white-space: nowrap;
+    color: white;
+    cursor: pointer;
+}
+
+
+@media (max-width: 1500px) {
+    .sidebar-user {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar-user .info .user {
+        display: none;
+    }
+
+    .sidebar-user .info .role {
+        display: none;
+    }   
+
+
+    .sidebar-menu .nav-item {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sidebar-menu .nav-item .nav-link {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        font-size: 12px;
+        padding: 0;
+
+    }
+
+    .sidebar-menu .nav-item .nav-link .icon{
+        width: 24px;
+        height: 24px;
+        margin-right: 0;
+    }
+
+    .sidebar-menu .nav-item .nav-link  span{
+        text-align: center;
+    }
+
+    .sidebar-menu .nav-item .nav-link  i {
+        margin-right: 0;
+    }
+
+    .sidebar-menu .nav-item i {
+        color: rgba(255, 255, 255, 0.8);
+        margin-right: 0;
+    }
+
+    .sidebar-menu li a {
+        font-size: 12px;
+    }
+
+}

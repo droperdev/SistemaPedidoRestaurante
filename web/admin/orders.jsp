@@ -160,6 +160,6 @@
 </html>
 <%
     } else {
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("admin/index.jsp");
     }
 %>

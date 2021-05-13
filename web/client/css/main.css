@@ -1,0 +1,38 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18/04/2021, 07:08:14 PM
+    Author     : droperdev
+*/
+
+
+
+.table-responsive {
+    padding:16px;
+    height: 100%;
+}
+
+.total {
+    position: absolute;
+    right: 0;
+    bottom:0;
+    padding: 24px;
+    font-weight: bold;
+}
+
+@media (max-width: 1500px) {
+    .sidebar {
+        width: 104px;
+    }
+    .header {
+        left: 104px;
+        width: calc(100% - 104px);
+    }
+    .content {
+        width: calc(100% - 104px);
+        left: 104px;
+    }
+}

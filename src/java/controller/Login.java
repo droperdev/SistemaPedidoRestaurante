@@ -5,6 +5,8 @@
  */
 package controller;
 
+import com.sun.faces.action.RequestMapping;
+import dto.ClientDTO;
 import dto.UserDTO;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.client.ClientDAOImpl;
 import model.user.UserDAOImpl;
 
 /**
@@ -21,7 +24,9 @@ import model.user.UserDAOImpl;
  */
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
 public class Login extends HttpServlet {
+
     HttpSession session;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,22 +40,37 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
-   
+
         if (action.equalsIgnoreCase("login")) {
-            request.setAttribute("message", null);
+            session = request.getSession();
+            session.setAttribute("message", "");
             String userName = request.getParameter("userName");
             String password = request.getParameter("password");
-            
+
             UserDAOImpl userDAO = new UserDAOImpl();
             UserDTO user = userDAO.validateCredentials(userName, password);
             if (user != null) {
-                session = request.getSession();
                 session.setAttribute("user", user);
                 response.sendRedirect("admin/orders.jsp");
                 //request.getRequestDispatcher("main.jsp").forward(request, response);
             } else {
-               request.setAttribute("message", "Credenciales invalidas");
-               request.getRequestDispatcher("/index.jsp").forward(request, response);
+                session.setAttribute("message", "Credenciales invalidas");
+                response.sendRedirect("admin/index.jsp");
+            }
+        } else if (action.equalsIgnoreCase("client-login")) {
+            session = request.getSession();
+            session.setAttribute("message", "");
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+
+            ClientDAOImpl clientDAO = new ClientDAOImpl();
+            ClientDTO client = clientDAO.validateCredentials(email, password);
+            if (client != null) {
+                session.setAttribute("client", client);
+                response.sendRedirect("client/main.jsp");
+            } else {
+                session.setAttribute("message", "Credenciales invalidas");
+                response.sendRedirect("client/index.jsp");
             }
         }
 
