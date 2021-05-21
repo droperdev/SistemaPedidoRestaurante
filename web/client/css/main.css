@@ -23,6 +23,52 @@ and open the template in the editor.
     font-weight: bold;
 }
 
+.content ul {
+    list-style: none;
+    margin: 0;
+    padding: 8px;
+    overflow: auto;
+}
+
+.content ul li {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    margin:8px;
+}
+
+.content ul li a {
+    color: rgba(0,0,0, 0.9);
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    width: 16rem;
+    text-align: left;
+
+}
+
+.modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 320px;
+    height: 100%;
+    right: 0px;
+}
+.modal-content {
+    height: 100%;
+}
+
+
+.modal.fade.modal-right .modal-dialog {
+  transform: translate(125%, 0px);
+}
+
+.modal.show.modal-right .modal-dialog {
+  transform: none;
+}
+
+
 @media (max-width: 1500px) {
     .sidebar {
         width: 104px;

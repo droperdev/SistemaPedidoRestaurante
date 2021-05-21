@@ -51,7 +51,7 @@
 </html>
 <%
     } else {
-        response.sendRedirect("client/main.jsp");
+        response.sendRedirect("main.jsp");
     }
 %>
 

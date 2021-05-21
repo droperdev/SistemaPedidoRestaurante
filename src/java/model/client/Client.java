@@ -9,6 +9,7 @@ public class Client {
     private String lastName;
     private String phone;
     private String email;
+    private String password;
     private Date birthday;
     private Date createdAt;
 
@@ -17,7 +18,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" + "id=" + id + ", name=" + name + ", lastName=" + lastName + ", phone=" + phone + ", email=" + email + ", birthday=" + birthday + ", createdAt=" + createdAt + '}';
+        return "Client{" + "id=" + id + ", name=" + name + ", lastName=" + lastName + ", phone=" + phone + ", email=" + email + ", password=" + password + ", birthday=" + birthday + ", createdAt=" + createdAt + '}';
     }
 
     public int getId() {
@@ -58,6 +59,14 @@ public class Client {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Date getBirthday() {

@@ -35,6 +35,7 @@ public class Main extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session;
         String action = request.getParameter("action");
 
         switch (action) {
@@ -86,9 +87,19 @@ public class Main extends HttpServlet {
                 response.sendRedirect("admin/user.jsp");
                 break;
             case "logout":
-                HttpSession session = request.getSession();
+                session = request.getSession();
                 session.removeAttribute("user");
                 response.sendRedirect("admin/index.jsp");
+                break;
+
+            case "logout-client":
+                session = request.getSession();
+                session.removeAttribute("client");
+                response.sendRedirect("client/index.jsp");
+                break;
+
+            case "main":
+                response.sendRedirect("client/main.jsp");
                 break;
 
         }

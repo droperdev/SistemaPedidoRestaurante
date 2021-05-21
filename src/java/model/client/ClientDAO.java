@@ -12,6 +12,10 @@ import dto.ClientDTO;
  * @author Administrador
  */
 public interface ClientDAO {
-     public Client getClient(int id);
-     public ClientDTO validateCredentials(String email, String password);
+
+    public Client getClient(int id);
+
+    public ClientDTO validateCredentials(String email, String password);
+
+    public int save(Client client);
 }

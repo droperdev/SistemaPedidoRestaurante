@@ -51,6 +51,6 @@
 </html>
 <%
     } else {
-        response.sendRedirect("main/orders.jsp");
+        response.sendRedirect("/orders.jsp");
     }
 %>

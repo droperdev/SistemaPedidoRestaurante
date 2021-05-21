@@ -32,7 +32,6 @@
                         <input class="form-control" type="text" disabled="true" value="<%=order.getAddress().getReference()%>">
                     </div>
                 </div> 
-                <% Double sum = 0.0;%>
                 <div class="col-md-7">
                     <div id="map"></div>
                 </div>
@@ -45,7 +44,8 @@
             function initMap() {
                 map = new google.maps.Map(document.getElementById("map"), {
                     center: {lat: <%=order.getAddress().getLatitude()%>, lng: <%=order.getAddress().getLongitude()%>},
-                    zoom: 14
+                    zoom: 14,
+                    disableDefaultUI: true,
                 });
 
                 new google.maps.Marker({

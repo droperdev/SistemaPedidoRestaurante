@@ -40,4 +40,21 @@ public class ClientAddressDAOImpl implements ClientAddressDAO {
         }
         return clientAddress;
 }
+
+    @Override
+    public void save(ClientAddress clientAddress) {
+        int id = 0;
+        String sql
+                = "INSERT INTO ClientAddress(ClientId, Address, Reference,Latitude,Longitude) "
+                + "VALUES('" + clientAddress.getClientId() + "', '" + clientAddress.getAddress() + "', '"+clientAddress.getReference()+"' , '" + clientAddress.getLatitude()+ "', '" + clientAddress.getLongitude()+ "')";
+        con = cn.getConnection();
+        try {
+            ps = con.prepareStatement(sql);
+            ps.execute();
+
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ClientAddressDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -27,7 +27,7 @@ public class ProductDAOImpl implements ProductDAO {
     ResultSet rs;
 
     @Override
-    public List<Product> list(int idCategory) {
+    public List<Product> getAll(int idCategory) {
         List<Product> products = new ArrayList<>();
         Product product = null;
         String query = "SELECT * FROM Product WHERE CategoryId=?";

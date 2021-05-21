@@ -27,7 +27,7 @@ public class CategoryDAOImpl implements CategoryDAO {
     ResultSet rs;
     
     @Override
-    public List<Category> list() {
+    public List<Category> getAll() {
         ArrayList<Category> lista = new ArrayList<>();
         Category category = null;
         String query = "SELECT * FROM Category ";

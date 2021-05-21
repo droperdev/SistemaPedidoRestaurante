@@ -186,14 +186,9 @@ li a {
         flex-direction: column;
     }
 
-    .sidebar-user .info .user {
-        display: none;
+    .sidebar-user .info {
+        display: none !important;
     }
-
-    .sidebar-user .info .role {
-        display: none;
-    }   
-
 
     .sidebar-menu .nav-item {
         justify-content: center;

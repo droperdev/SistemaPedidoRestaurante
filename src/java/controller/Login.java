@@ -15,7 +15,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.client.Client;
 import model.client.ClientDAOImpl;
+import model.clientAddress.ClientAddress;
+import model.clientAddress.ClientAddressDAO;
+import model.clientAddress.ClientAddressDAOImpl;
 import model.user.UserDAOImpl;
 
 /**
@@ -40,38 +44,77 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
+        switch (action) {
+            case "login": {
+                session = request.getSession();
+                session.setAttribute("message", "");
+                String userName = request.getParameter("userName");
+                String password = request.getParameter("password");
 
-        if (action.equalsIgnoreCase("login")) {
-            session = request.getSession();
-            session.setAttribute("message", "");
-            String userName = request.getParameter("userName");
-            String password = request.getParameter("password");
-
-            UserDAOImpl userDAO = new UserDAOImpl();
-            UserDTO user = userDAO.validateCredentials(userName, password);
-            if (user != null) {
-                session.setAttribute("user", user);
-                response.sendRedirect("admin/orders.jsp");
-                //request.getRequestDispatcher("main.jsp").forward(request, response);
-            } else {
-                session.setAttribute("message", "Credenciales invalidas");
-                response.sendRedirect("admin/index.jsp");
+                UserDAOImpl userDAO = new UserDAOImpl();
+                UserDTO user = userDAO.validateCredentials(userName, password);
+                if (user != null) {
+                    session.setAttribute("user", user);
+                    response.sendRedirect("admin/orders.jsp");
+                    //request.getRequestDispatcher("main.jsp").forward(request, response);
+                } else {
+                    session.setAttribute("message", "Credenciales invalidas");
+                    response.sendRedirect("admin/index.jsp");
+                }
+                break;
             }
-        } else if (action.equalsIgnoreCase("client-login")) {
-            session = request.getSession();
-            session.setAttribute("message", "");
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
 
-            ClientDAOImpl clientDAO = new ClientDAOImpl();
-            ClientDTO client = clientDAO.validateCredentials(email, password);
-            if (client != null) {
-                session.setAttribute("client", client);
-                response.sendRedirect("client/main.jsp");
-            } else {
-                session.setAttribute("message", "Credenciales invalidas");
+            case "client-login": {
+                session = request.getSession();
+                session.setAttribute("message", "");
+                String email = request.getParameter("email");
+                String password = request.getParameter("password");
+
+                ClientDAOImpl clientDAO = new ClientDAOImpl();
+                ClientDTO client = clientDAO.validateCredentials(email, password);
+                if (client != null) {
+                    session.setAttribute("client", client);
+                    response.sendRedirect("client/main.jsp");
+                } else {
+                    session.setAttribute("message", "Credenciales invalidas");
+                    response.sendRedirect("client/index.jsp");
+                }
+                break;
+            }
+
+            case "register":
+                String name = request.getParameter("name");
+                String lastName = request.getParameter("lastName");
+                String email = request.getParameter("email");
+                String password = request.getParameter("password");
+
+                String address = request.getParameter("address");
+                String reference = request.getParameter("reference");
+                Double latitude = Double.parseDouble(request.getParameter("latitude"));
+                Double longitude = Double.parseDouble(request.getParameter("longitude"));
+
+                Client client = new Client();
+                client.setName(name);
+                client.setLastName(lastName);
+                client.setEmail(email);
+                client.setPassword(password);
+
+                ClientDAOImpl clientDAO = new ClientDAOImpl();
+                int clientId = clientDAO.save(client);
+                
+                ClientAddress clientAddress = new ClientAddress();
+                clientAddress.setClientId(clientId);
+                clientAddress.setAddress(address);
+                clientAddress.setReference(reference);
+                clientAddress.setLatitude(latitude);
+                clientAddress.setLongitude(longitude);
+                
+                ClientAddressDAOImpl clientAddressDAO = new ClientAddressDAOImpl();
+                clientAddressDAO.save(clientAddress);
+  
+                //session.setAttribute("message", "Credenciales invalidas");
                 response.sendRedirect("client/index.jsp");
-            }
+                break;
         }
 
     }

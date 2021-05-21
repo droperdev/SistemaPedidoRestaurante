@@ -12,5 +12,5 @@ import java.util.List;
  * @author IVAN
  */
 public interface ProductDAO {
-    List<Product> list(int idCategory);
+    List<Product> getAll(int idCategory);
 }
