@@ -74,4 +74,22 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
         return orderDetails;
     }
 
+    @Override
+    public void save(int orderId, OrderDetail orderDetail) {
+        String sql
+                = "INSERT INTO OrderDetail(OrderId, ProductId, Quantity, Price) "
+                + "VALUES(?, ?, ?, ?)";
+        con = cn.getConnection();
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, orderId);
+            ps.setInt(2, orderDetail.getProductId());
+            ps.setInt(3, orderDetail.getQuantity());
+            ps.setDouble(4, orderDetail.getPrice());
+            ps.execute();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderDetailDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -13,9 +13,11 @@ import java.util.List;
  * @author droperdev
  */
 public interface OrderDAO {
+    public int save(Order order);
     public OrderDTO get(int orderId);
     public List<OrderDTO> getAll(int[] ints);
     public void assignDistributor(int orderId, int distributorId);
     public void changeStatus(int orderId);
     public void cancelOrder(int orderId);
+    public List<OrderDTO> getAll(int clientId);
 }

@@ -4,8 +4,8 @@
     Author     : droperdev
 --%>
 
-<%@page import="java.util.ArrayList"%>
-<%@page import="dto.CartDTO"%>
+<%@page import="model.order.OrderDAOImpl"%>
+<%@page import="dto.OrderDTO"%>
 <%@page import="dto.ClientDTO"%>
 <%@page import="model.category.CategoryDAOImpl"%>
 <%@page import="model.category.Category"%>
@@ -14,14 +14,6 @@
 <%
     ClientDTO client = (ClientDTO) session.getAttribute("client");
     if (client != null) {
-        List<CartDTO> carts;
-        Object object = session.getAttribute("carts");
-        if (object != null) {
-            carts = (List) object;
-        } else {
-            carts = new ArrayList();
-        }
-
 %>
 <!DOCTYPE html>
 <html>
@@ -51,20 +43,20 @@
                 </div>
                 <hr>
                 <ul class="sidebar-menu">
-                    <li class="nav-item show">
+                    <li class="nav-item">
                         <a class="nav-link" href="../Main?action=main">
                             <img class="icon" src="assets/order.svg">
                             <span clasS="text-wrap">Catálogos</span>
                         </a>
                     </li>
-                    
-                       <li class="nav-item">
+
+                    <li class="nav-item show">
                         <a class="nav-link" href="../Main?action=listOrders">
                             <img class="icon" src="assets/order.svg">
                             <span clasS="text-wrap">Mis Pedidos</span>
                         </a>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a class="nav-link" href="../Main?action=logout-client">
                             <img class="icon" src="assets/logout.svg">
@@ -76,57 +68,66 @@
         </div>
         <div class="header">
             <div class="content-header">
-                <span class="title">Catálogo</span>
-                <button type="button" class="btn btn-primary" onclick="openCart();">Carrito (<%=carts.size()%>)</button>
+                <span class="title">Mis Pedidos</span>
             </div>
 
         </div>
         <div class="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h4>Categorias</h4>
-                        <% List<Category> categories = new CategoryDAOImpl().getAll();%>
-                        <ul>
-                            <%! Category category;%>
-                            <% for (int i = 0; i < categories.size(); i++) { %>
-                            <% category = categories.get(i);%>
-                            <li class="card p-2">
-                                <a onclick="loadProducts(<%=category.getId()%>)">
-                                    <span clasS="text-wrap"><%=category.getName()%></span>
-                                </a>
-                            </li>
-                            <% }%>
-                        </ul>
-                    </div>
-                    <div class="col-md-8">
-                        <div id="products">
+            <% int[] ids = {1, 2, 3}; %>
+            <% List<OrderDTO> orders = new OrderDAOImpl().getAll(client.getId()); %>
+            <div class="card table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Dirección</th>
+                            <th>Método de Pago</th>
+                            <th>Voucher</th>
+                            <th>Tipo de pedido </th>
+                            <th>Distribuidor</th>
+                            <th>Total</th>
+                            <th class="text-center">Estado</th>
 
-                        </div>
-                    </div>
 
-                </div>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%! OrderDTO order;%>
+                        <% for (int i = 0; i < orders.size(); i++) { %>
+                        <% order = new OrderDTO();
+                            order = orders.get(i);%>
+                        <tr>
+                            <td><%=order.getId()%></td>
+
+                            <td><%=order.getClient().getName()%></td>
+                            <td><%=order.getClient().getLastName()%></td>
+                            <td>
+                                <%=order.getAddress().getAddress()%> <br>
+                                <%=order.getAddress().getReference()%>
+                            </td>
+                            <td><%=order.getPaymentMethod().getName()%></td>
+                            <td><%=order.getVoucher().getName()%></td>
+                            <td><%=order.getOrderType().getName()%></td>
+                            <% if (order.getDistributor().getName() != null) {%>
+                            <td class="font-weight-bold"><%=order.getDistributor().getName() + " " + order.getDistributor().getLastName()%></td>
+                            <% } else {%>
+                            <td class="font-weight-bold">-</td>
+                            <%}%>
+                            <td class="font-weight-bold text-success">S/&nbsp;<%=String.format("%.2f", order.getTotal())%></td>
+                            <td class="text-center"><span class="<%=order.getStatus().getClassName()%>"><%=order.getStatus().getName()%></span></td>
+
+                        </tr>
+                        <% }%>
+                    </tbody>
+                </table>
             </div>
-            <div class="modal fade modal-right" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="MyModalLabel" >
-                <div class="modal-dialog" role="document">
+            <div class="modal fade" id="MyModal2" tabindex="-1" role="dialog" aria-labelledby="MyModalLabel2" >
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="MyModalLabel"></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body" id="content-modal">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="MyModalCheckout" tabindex="-1" role="dialog" aria-labelledby="MyModalLabel" >
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="MyModalLabel"></h5>
+                            <h5 class="modal-title" id="MyModalLabel2"></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>

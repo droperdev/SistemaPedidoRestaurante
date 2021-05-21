@@ -1,17 +1,10 @@
-/*
+/* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.product;
 
-import java.util.List;
-
-/**
- *
- * @author IVAN
- */
-public interface ProductDAO {
-    Product get(int productId);
-    List<Product> getAll(int idCategory);
+    
+openCheckout = () => {
+   window.location = "checkout.jsp" 
 }

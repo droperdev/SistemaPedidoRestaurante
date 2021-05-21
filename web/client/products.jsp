@@ -4,6 +4,9 @@
     Author     : droperdev
 --%>
 
+<%@page import="dto.ProductDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dto.CartDTO"%>
 <%@page import="model.product.Product"%>
 <%@page import="model.product.ProductDAOImpl"%>
 <%@page import="java.util.List"%>
@@ -12,7 +15,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
         <link rel="stylesheet" href="css/products.css" >
     </head>
     <body>
@@ -26,10 +28,12 @@
             <div class="card flex-row flex-wrap">
                 <img class="card-img-top" src="https://tipsparatuviaje.com/wp-content/uploads/2019/08/papa-a-la-huancaina.jpg">
                 <div class="card-body">
-                    <h5 class="card-title"><%=product.getName()%></h5>
-                    <p class="card-text"><%=product.getDescription()%></p>
-                    <div class="price text-success text-right"><h5 class="mt-4 mb-4">S/ <%=String.format("%.2f", product.getPrice())%></h5></div>
-                    <input class="btn btn-primary btn-block" type="button" value="Agregar">
+                    <form method="POST" action="../Main?action=addProduct&productId=<%= product.getId()%>">
+                        <h5 class="card-title"><%=product.getName()%></h5>
+                        <p class="card-text"><%=product.getDescription()%></p>
+                        <div class="price text-success text-right"><h5 class="mt-4 mb-4">S/ <%=String.format("%.2f", product.getPrice())%></h5></div>
+                        <input class="btn btn-primary btn-block" type="submit" value="Agregar">
+                    </form>
                 </div>
             </div>
             <% }%>

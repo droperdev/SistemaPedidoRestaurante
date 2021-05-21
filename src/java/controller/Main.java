@@ -5,15 +5,25 @@
  */
 package controller;
 
+import dto.CartDTO;
+import dto.ClientDTO;
+import dto.ProductDTO;
 import dto.UserDTO;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.order.Order;
 import model.order.OrderDAOImpl;
+import model.orderDetail.OrderDetail;
+import model.orderDetail.OrderDetailDAOImpl;
+import model.product.Product;
+import model.product.ProductDAOImpl;
 import model.user.UserDAOImpl;
 
 /**
@@ -100,6 +110,83 @@ public class Main extends HttpServlet {
 
             case "main":
                 response.sendRedirect("client/main.jsp");
+                break;
+                
+            case "listOrders":
+                response.sendRedirect("client/orders.jsp");
+                break;
+
+            case "addProduct":
+                System.out.println("addProduct");
+                session = request.getSession();
+                int productId = Integer.parseInt(request.getParameter("productId"));
+                Product product = new ProductDAOImpl().get(productId);
+
+                List<CartDTO> carts;
+                Object object = session.getAttribute("carts");
+                if (object != null) {
+                    carts = (List) object;
+                    System.out.println(carts);
+                    CartDTO cart = new CartDTO();
+                    ProductDTO productDTO = new ProductDTO();
+                    productDTO.setId(product.getId());
+                    productDTO.setName(product.getName());
+                    productDTO.setDescription(product.getDescription());
+                    productDTO.setPrice(product.getPrice());
+
+                    cart.setProduct(productDTO);
+                    cart.setQuantity(1);
+                    carts.add(cart);
+                    session.setAttribute("carts", carts);
+                } else {
+                    carts = new ArrayList();
+                    System.out.println(carts);
+                    CartDTO cart = new CartDTO();
+                    ProductDTO productDTO = new ProductDTO();
+                    productDTO.setId(product.getId());
+                    productDTO.setName(product.getName());
+                    productDTO.setDescription(product.getDescription());
+                    productDTO.setPrice(product.getPrice());
+
+                    cart.setProduct(productDTO);
+                    cart.setQuantity(1);
+                    carts.add(cart);
+                    session.setAttribute("carts", carts);
+                }
+                response.sendRedirect("client/main.jsp");
+                break;
+
+            case "checkout":
+                session = request.getSession();
+                ClientDTO client = (ClientDTO) session.getAttribute("client");
+                
+                List<CartDTO> cartList = (List) session.getAttribute("carts");
+
+                int addressId = Integer.parseInt(request.getParameter("addressId"));
+                int paymentMethodId = Integer.parseInt(request.getParameter("paymentMethodId"));
+                int voucherId = Integer.parseInt(request.getParameter("voucherId"));
+                int orderTypeId = Integer.parseInt(request.getParameter("orderTypeId"));
+
+                Order order = new Order();
+                order.setClientId(client.getId());
+                order.setAddressId(addressId);
+                order.setPaymentMethodId(paymentMethodId);
+                order.setVoucherId(voucherId);
+                order.setOrderTypeId(orderTypeId);
+                int orderIdRegister = new OrderDAOImpl().save(order);
+                
+                OrderDetailDAOImpl orderDetailDAO;
+                OrderDetail orderDetail;
+                for (int i = 0; i < cartList.size(); i++) {
+                    orderDetail = new OrderDetail();
+                    orderDetail.setProductId(cartList.get(i).getProduct().getId());
+                    orderDetail.setQuantity(cartList.get(i).getQuantity());
+                    orderDetail.setPrice(cartList.get(i).getProduct().getPrice());
+                    orderDetailDAO = new OrderDetailDAOImpl();
+                    orderDetailDAO.save(orderIdRegister, orderDetail);
+                }
+                session.removeAttribute("carts");
+                response.sendRedirect("client/orders.jsp");
                 break;
 
         }

@@ -13,6 +13,6 @@ import java.util.List;
  * @author droperdev
  */
 public interface OrderDetailDAO {
-
+    public void save(int orderId, OrderDetail orderDetail);
     public List<OrderDetailDTO> get(int orderId);
 }

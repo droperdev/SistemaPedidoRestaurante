@@ -17,7 +17,7 @@
         <% int orderId = Integer.parseInt(request.getParameter("orderId"));%>
         <% List<UserDTO> users = new UserDAOImpl().getDistributors(2);%>
         <div class="container">
-            <form method="POST" action="Main?action=assign&orderId=<%=orderId%>">
+            <form method="POST" action="../Main?action=assign&orderId=<%=orderId%>">
                 <div class="form-group">
                     <label>Distribuidores</label>
                     <select name="distributorId" class="form-control">

@@ -51,7 +51,7 @@ and open the template in the editor.
 .modal-dialog {
     position: fixed;
     margin: auto;
-    width: 320px;
+    width: 360px;
     height: 100%;
     right: 0px;
 }
@@ -59,13 +59,17 @@ and open the template in the editor.
     height: 100%;
 }
 
+.modal-body {
+    overflow: scroll;
+}
+
 
 .modal.fade.modal-right .modal-dialog {
-  transform: translate(125%, 0px);
+    transform: translate(125%, 0px);
 }
 
 .modal.show.modal-right .modal-dialog {
-  transform: none;
+    transform: none;
 }
 
 

@@ -5,12 +5,11 @@
  */
 
 
-openCart = (userId) => {
-    console.log(userId);
+openCart = () => {
      $("#MyModal").modal('show');
     $(".modal-dialog").removeClass("modal-lg").addClass("modal-lg");
     $("#MyModalLabel").text("Carrito de compras");
-    $("#content-modal").load("cart.jsp", {userId});
+    $("#content-modal").load("cart.jsp");
 }
 
 

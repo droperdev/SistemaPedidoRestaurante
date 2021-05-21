@@ -27,11 +27,11 @@
             <form method="POST" action="../Login?action=client-login">
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>
-                    <input id="email" class="form-control" type="email" name="email"/>
+                    <input id="email" class="form-control" type="email" name="email" value="jperez@gmail.com"/>
                 </div>
                 <div class="form-group">
                     <label for="password">Contraseña</label>
-                    <input id="password" class="form-control" maxlength="6" type="password" name="password"/>
+                    <input id="password" class="form-control" maxlength="6" type="password" name="password" value="123456"/>
                 </div>
                 <input class="btn btn-primary btn-block" type="submit" value="Iniciar sesion">
                 <input id="btn_register" class="btn btn-primary btn-block" type="button" value="Registrar">
